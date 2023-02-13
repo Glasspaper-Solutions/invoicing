@@ -42,7 +42,7 @@
         </select>
       </div>
     </div>
-    <div class="column uploads">
+    <div class="column uploads" v-if="showUploads()">
       <p>Importere visma lønn</p>
       <form action="/action_page.php">
         <input type="file" id="visma-lønn" name="VismaLønn">
@@ -90,6 +90,12 @@ export default {
   methods: {
     companyChanged() {
       console.log(this.company);
+    },
+    showUploads() {
+      // check if all three inputs are not null
+      if (this.company && this.year && this.month) {
+        return true;
+      }
     },
   },
 };
