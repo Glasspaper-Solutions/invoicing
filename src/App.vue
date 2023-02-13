@@ -1,6 +1,4 @@
 <!-- eslint-disable prettier/prettier -->
-<!-- eslint-disable prettier/prettier -->
-<!-- eslint-disable prettier/prettier -->
 <template>
   <div class="container">
     <div class="column inputs">
@@ -26,7 +24,7 @@
           id="year"
           class="input-area"
           v-model="year"
-          placeholder="Skriv året"
+          placeholder="Skriv år"
         />
       </div>
       <!--month selection-->

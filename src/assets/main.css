@@ -27,14 +27,14 @@ body {
 label {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #c4c4c6;
+  color: #000000;
   text-align: center;
 }
 
 .year, .company, .month {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #c4c4c6;
+  color: #000000;
   text-align: center;
   width: 200%;
   align-items: center;
