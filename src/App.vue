@@ -6,14 +6,14 @@
     <div class="column inputs">
       <!-- Company selection -->
       <div class="company">
-        <label for="company">Company</label>
+        <label for="company">Selskap</label>
         <select
           id="company"
+          class="dropdown"
           v-model="company"
           @change="companyChanged"
-          :disabled="!companies.length"
         >
-          <option value="" disabled>Select a company</option>
+          <option value="" disabled>Velg et selskap</option>
           <option v-for="company in companies" :key="company" :value="company">
             {{ company }}
           </option>
@@ -21,23 +21,23 @@
       </div>
       <!-- Year input -->
       <div class="year">
-        <label for="year">Year</label>
+        <label for="year">År</label>
         <input
           id="year"
-          type="number"
+          class="input-area"
           v-model="year"
-          placeholder="Enter a year"
+          placeholder="Skriv året"
         />
       </div>
       <!--month selection-->
       <div class="month">
-        <label for="month">Month</label>
+        <label for="month">Måned</label>
         <select
+          class="dropdown"
           id="month"
           v-model="month"
-          :disabled="!months.length"
         >
-          <option value="" disabled>Select a month</option>
+          <option value="" disabled>Velg en måned</option>
           <option v-for="month in months" :key="month" :value="month">
             {{ month }}
           </option>
@@ -73,18 +73,18 @@ export default {
       companies: ["Kims", "Lays", "Walkers"],
       year: null,
       months: [
-        "January",
-        "February",
-        "March",
+        "Januar",
+        "Februar",
+        "Mars",
         "April",
-        "May",
-        "June",
-        "July",
+        "Mai",
+        "Juni",
+        "Juli",
         "August",
         "September",
-        "October",
+        "Oktober",
         "November",
-        "December",
+        "Desember",
       ],
       month: null,
     };
