@@ -121,7 +121,7 @@ export default {
       const path = fileInput.value
       this.filename = path.split(/(\\|\/)/g).pop();
       console.log(this.filename)
-    }
+    },
     showUploads() {
       // check if all three inputs are not null
       if (this.company && this.year && this.month) {
