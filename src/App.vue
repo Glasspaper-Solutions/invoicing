@@ -115,11 +115,16 @@ export default {
       this.log.push(string);
     },
     downloadLog() {
-      var element = document.createElement("a");
-      var file = new Blob([this.log], { type: "text/plain" });
-      element.href = URL.createObjectURL(file);
-      element.download = "logg.txt";
-      element.click();
+      // download log to txt file where every item in the array is separated on a new line
+      var string = "";
+      for (var i = 0; i < this.log.length; i++) {
+        string += this.log[i] + "\n";
+      }
+      var blob = new Blob([string], { type: "text/plain" });
+      var link = document.createElement("a");
+      link.href = window.URL.createObjectURL(blob);
+      link.download = "logg.txt";
+      link.click();
     },
   },
 };
