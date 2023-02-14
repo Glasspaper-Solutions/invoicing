@@ -23,17 +23,19 @@ body {
   justify-content: space-between;
 }
 
+/* create a container for the three parts of 'importere visma lønn' */
 .visma-lønn-container {
   display: grid;
   grid-auto-rows: auto;
   grid-template-columns: 1fr 2fr 1fr;
 }
 
-.custom-file-upload {
+/* styles the 'velg fil' button */
+.custom-file-upload, .submit-button {
   display: inline-block;
   cursor: pointer;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #ffffff;
+  color: #000000;
   border: none;
   width: 100%;
 }
@@ -47,9 +49,18 @@ body {
 #visma-lønn {
   display: none;
 }
-
 .clickable-area {
   padding: 6px 12px;  
   text-align: center;
 }
 
+.uploads {
+  color: rgb(112, 112, 112);
+}
+
+.filename {
+  font-size: 13px;
+  padding-top: 1vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}

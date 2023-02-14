@@ -52,8 +52,8 @@
             <label class="visma-lønn-label" for="visma-lønn" @click=""><div class="clickable-area">{{ buttonText }}</div></label>
             <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
         </div>
-        <p>{{ filename }}</p>
-        <input type="submit">
+        <p class="filename">{{ filename }}</p>
+        <input class="submit-button" type="submit">
       </div>
         <!-- distribute coverage contributions -->
       <p>Fordele dekningsbidrag</p>
@@ -95,16 +95,12 @@ export default {
       ],
       month: null,
       buttonText: 'Velg fil',
-      filename: null,
+      filename: 'Ingen fil valgt',
     };
   },
   methods: {
     companyChanged() {
       console.log(this.company);
-    },
-    onFileSelected(event) {
-      const file = event.target.files[0];
-      // Do something with the selected file
     },
     findFile() {
       console.log("finding file name")
