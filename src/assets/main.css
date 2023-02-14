@@ -100,3 +100,18 @@ input[type=number] {
   border-radius: 4%;
   height: 100%;
 }
+
+.download {
+  /* better button styling */
+  background-color: #EBEBEB;
+  border: none;
+  color: #000000;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}

@@ -65,7 +65,7 @@
       <div class="log-window">
         <p v-for="log in log" :key="log">{{ log }}</p>
       </div>
-      <button @click="downloadLog()">Last ned logg</button>
+      <button @click="downloadLog()" class="download">Last ned logg</button>
     </div>
   </div>
 </template>
