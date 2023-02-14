@@ -47,13 +47,15 @@
     <div class="column uploads">
       <!-- import payment -->
       <p>Importere visma lønn</p>
-      <div class="custom-file-upload">
-          <label class="visma-lønn-label" for="visma-lønn" @click=""><div class="clickable-area">{{ buttonText }}</div></label>
-          <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
+      <div class="visma-lønn-container">
+        <div class="custom-file-upload">
+            <label class="visma-lønn-label" for="visma-lønn" @click=""><div class="clickable-area">{{ buttonText }}</div></label>
+            <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
+        </div>
+        <p>{{ filename }}</p>
+        <input type="submit">
       </div>
-      <p>{{ filename }}</p>
-      <input type="submit">
-      <!-- distribute coverage contributions -->
+        <!-- distribute coverage contributions -->
       <p>Fordele dekningsbidrag</p>
       <button>Fordel</button>
       <!-- import invoice -->
