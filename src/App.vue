@@ -1,6 +1,21 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
-  <div class="container">
+  <div class="select-user" v-if="selectedUser == null">
+    <!--select user option from data-->
+    <label for="user">Velg bruker</label>
+    <select
+      id="user"
+      class="dropdown"
+      v-model="selectedUser"
+      @change="userChanged"
+    >
+      <option value="" disabled>Velg en bruker</option>
+      <option v-for="user in data.users" :key="user" :value="user">
+        {{ user.name }}
+      </option>
+    </select>
+  </div>
+  <div class="container" v-if="selectedUser != null">
     <div class="column inputs">
       <!-- Company selection -->
       <div class="company">
@@ -12,8 +27,8 @@
           @change="companyChanged"
         >
           <option value="" disabled>Velg et selskap</option>
-          <option v-for="company in companies" :key="company" :value="company">
-            {{ company }}
+          <option v-for="company in selectedUser.companies" :key="company" :value="company" v-bind="company">
+            {{ company.name }}
           </option>
         </select>
       </div>
@@ -45,23 +60,24 @@
     </div>
     <div class="column uploads">
       <div class="subuploads" v-if="showUploads()">
-        <!-- import payment -->
-        <p>Importere visma lønn</p>
-        <div class="visma-lønn-container">
+        <p v-if="showSalary()">Importere visma lønn</p>
+        <div class="visma-lønn-container" v-if="showSalary()">
           <div class="custom-file-upload">
-              <label class="visma-lønn-label" for="visma-lønn"><div class="clickable-area">{{ buttonText }}</div></label>
-              <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()"/>
+            <label class="visma-lønn-label" for="visma-lønn">
+              <div class="clickable-area">{{ buttonText }}</div>
+            </label>
+            <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
           </div>
           <p class="filename">{{ filename }}</p>
           <input class="submit-button" type="submit" v-if="filename != 'Ingen fil valgt'">
         </div>
-          <!-- distribute coverage contributions -->
-        <p>Fordele dekningsbidrag</p>
-        <button class="fordel-dekningsbidrag">Fordel</button>
+        <!-- distribute coverage contributions -->
+        <p v-if="showCoverage()">Fordele dekningsbidrag</p>
+        <button v-if="showCoverage()" class="fordel-dekningsbidrag">Fordel</button>
         <!-- import invoice -->
-        <form action="/action_page.php">
+        <form action="/action_page.php" v-if="showInvoice()">
           <p>Importere fakturagrunnlag</p>
-          <div class="invoice-container">  
+          <div class="invoice-container">
             <div class="custom-file-upload">
                 <label class="invoice-label" for="fakturagrunnlag"><div class="clickable-area">{{ buttonText }}</div></label>
                 <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag" @change="findFile2()"/> 
@@ -84,12 +100,13 @@
 </template>
 
 <script>
+import Users from "./assets/data/users";
+
 export default {
   name: "App",
   data() {
     return {
       company: null,
-      companies: ["Kims", "Lays", "Walkers"],
       year: null,
       months: [
         "Januar",
@@ -110,18 +127,18 @@ export default {
       filename: 'Ingen fil valgt',
       filename2: 'Ingen fil valgt',
       log: [],
+      // load json data from file
+      data: Users,
+      selectedUser: null,
     };
   },
   methods: {
-    companyChanged() {
-      console.log(this.company);
-    },
     findFile() {
-      console.log("finding file name")
-      const fileInput = document.querySelector('#visma-lønn');
-      const path = fileInput.value
+      console.log("finding file name");
+      const fileInput = document.querySelector("#visma-lønn");
+      const path = fileInput.value;
       this.filename = path.split(/(\\|\/)/g).pop();
-      console.log(this.filename)
+      console.log(this.filename);
     },
     findFile2() {
       console.log("finding file name")
@@ -138,11 +155,11 @@ export default {
       }
     },
     sendLønn() {
-      var string = `${this.company}:${this.month}:${this.year}:innsending:sendt inn lønn`;
+      var string = `${this.company.name}:${this.month}:${this.year}:innsending:sendt inn lønn`;
       this.log.push(string);
     },
     sendFaktura() {
-      var string = `${this.company}:${this.month}:${this.year}:innsending:sendt inn faktura`;
+      var string = `${this.company.name}:${this.month}:${this.year}:innsending:sendt inn faktura`;
       this.log.push(string);
     },
     downloadLog() {
@@ -156,6 +173,39 @@ export default {
       link.href = window.URL.createObjectURL(blob);
       link.download = "logg.txt";
       link.click();
+    },
+    showInvoice() {
+      if (this.company == null) {
+        return false;
+      }
+      // check if "invoice" is in array without using includes()
+      for (var i = 0; i < this.company.applications.length; i++) {
+        if (this.company.applications[i] == "invoice") {
+          return true;
+        }
+      }
+    },
+    showCoverage() {
+      if (this.company == null) {
+        return false;
+      }
+      // check if "coverage" is in array without using includes()
+      for (var i = 0; i < this.company.applications.length; i++) {
+        if (this.company.applications[i] == "coverage") {
+          return true;
+        }
+      }
+    },
+    showSalary() {
+      if (this.company == null) {
+        return false;
+      }
+      // check if "salary" is in array without using includes()
+      for (var i = 0; i < this.company.applications.length; i++) {
+        if (this.company.applications[i] == "salary") {
+          return true;
+        }
+      }
     },
   },
 };
