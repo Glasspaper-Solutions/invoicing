@@ -49,20 +49,26 @@
       <p>Importere visma lønn</p>
       <div class="visma-lønn-container">
         <div class="custom-file-upload">
-            <label class="visma-lønn-label" for="visma-lønn" @click=""><div class="clickable-area">{{ buttonText }}</div></label>
-            <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
+            <label class="visma-lønn-label" for="visma-lønn"><div class="clickable-area">{{ buttonText }}</div></label>
+            <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()"/>
         </div>
         <p class="filename">{{ filename }}</p>
         <input class="submit-button" type="submit">
       </div>
         <!-- distribute coverage contributions -->
       <p>Fordele dekningsbidrag</p>
-      <button>Fordel</button>
+      <button class="fordel-dekningsbidrag">Fordel</button>
       <!-- import invoice -->
-      <p>Importere fakturagrunnlag</p>
       <form action="/action_page.php">
-        <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag">
-        <input type="submit">
+        <p>Importere fakturagrunnlag</p>
+        <div class="invoice-container">  
+          <div class="custom-file-upload">
+              <label class="invoice-label" for="fakturagrunnlag"><div class="clickable-area">{{ buttonText }}</div></label>
+              <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag" @change="findFile()"/> 
+          </div>
+          <p class="filename" >{{ filename }}</p>
+          <input class="submit-button" type="submit">
+        </div>
       </form>
     </div>
     <div class="column log">
