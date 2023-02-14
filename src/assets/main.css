@@ -87,6 +87,9 @@ input[type=number] {
 }
 
 .log {
-  color: #000000;
+  color: #ffffff;
   text-align: center;
+  overflow:scroll;
+  background-color: #000000;
+  border-radius: 4%;
 }
