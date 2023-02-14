@@ -39,6 +39,7 @@ label {
   align-items: center;
   width: 100%;
   align-items: center;
+  margin-top: 10%;
 }
 
 input::-webkit-outer-spin-button,
