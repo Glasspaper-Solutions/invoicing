@@ -65,6 +65,7 @@
       <div class="log-window">
         <p v-for="log in log" :key="log">{{ log }}</p>
       </div>
+      <button @click="downloadLog()">Last ned logg</button>
     </div>
   </div>
 </template>
@@ -112,6 +113,13 @@ export default {
     sendFaktura() {
       var string = `${this.company}:${this.month}:${this.year}:innsending:sendt inn faktura`;
       this.log.push(string);
+    },
+    downloadLog() {
+      var element = document.createElement("a");
+      var file = new Blob([this.log], { type: "text/plain" });
+      element.href = URL.createObjectURL(file);
+      element.download = "logg.txt";
+      element.click();
     },
   },
 };

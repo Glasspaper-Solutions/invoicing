@@ -86,7 +86,17 @@ input[type=number] {
     box-sizing: border-box;
 }
 
-.log {
+.log p {
   color: #000000;
   text-align: center;
+}
+
+.log-window {
+  color: #ffffff;
+  text-align: center;
+  overflow:scroll;
+  background-color: #000000;
+  color: white;
+  border-radius: 4%;
+  height: 100%;
 }
