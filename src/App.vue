@@ -45,13 +45,18 @@
       </div>
     </div>
     <div class="column uploads">
+      <!-- import payment -->
       <p>Importere visma lønn</p>
-      <form action="/action_page.php">
-        <input type="file" id="visma-lønn" name="VismaLønn">
-        <input type="submit">
-      </form>
+      <div class="custom-file-upload">
+          <label class="visma-lønn-label" for="visma-lønn" @click=""><div class="clickable-area">{{ buttonText }}</div></label>
+          <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
+      </div>
+      <p>{{ filename }}</p>
+      <input type="submit">
+      <!-- distribute coverage contributions -->
       <p>Fordele dekningsbidrag</p>
       <button>Fordel</button>
+      <!-- import invoice -->
       <p>Importere fakturagrunnlag</p>
       <form action="/action_page.php">
         <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag">
@@ -87,12 +92,25 @@ export default {
         "December",
       ],
       month: null,
+      buttonText: 'Velg fil',
+      filename: null,
     };
   },
   methods: {
     companyChanged() {
       console.log(this.company);
     },
+    onFileSelected(event) {
+      const file = event.target.files[0];
+      // Do something with the selected file
+    },
+    findFile() {
+      console.log("finding file name")
+      const fileInput = document.querySelector('#visma-lønn');
+      const path = fileInput.value
+      this.filename = path.split(/(\\|\/)/g).pop();
+      console.log(this.filename)
+    }
   },
 };
 </script>
