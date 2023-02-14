@@ -53,7 +53,7 @@
               <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()"/>
           </div>
           <p class="filename">{{ filename }}</p>
-          <input class="submit-button" type="submit">
+          <input class="submit-button" type="submit" v-if="filename != 'Ingen fil valgt'">
         </div>
           <!-- distribute coverage contributions -->
         <p>Fordele dekningsbidrag</p>
@@ -67,7 +67,7 @@
                 <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag" @change="findFile2()"/> 
             </div>
             <p class="filename" >{{ filename2 }}</p>
-            <input class="submit-button" type="submit">
+            <input class="submit-button" type="submit" v-if="filename2 != 'Ingen fil valgt'">
           </div>
         </form>
       </div>
@@ -108,7 +108,7 @@ export default {
       month: null,
       buttonText: 'Velg fil',
       filename: 'Ingen fil valgt',
-      filename2: 'Inegn',
+      filename2: 'Ingen fil valgt',
       log: [],
     };
   },
