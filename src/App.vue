@@ -64,9 +64,9 @@
           <div class="invoice-container">  
             <div class="custom-file-upload">
                 <label class="invoice-label" for="fakturagrunnlag"><div class="clickable-area">{{ buttonText }}</div></label>
-                <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag" @change="findFile()"/> 
+                <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag" @change="findFile2()"/> 
             </div>
-            <p class="filename" >{{ filename }}</p>
+            <p class="filename" >{{ filename2 }}</p>
             <input class="submit-button" type="submit">
           </div>
         </form>
@@ -108,6 +108,7 @@ export default {
       month: null,
       buttonText: 'Velg fil',
       filename: 'Ingen fil valgt',
+      filename2: 'Inegn',
       log: [],
     };
   },
@@ -122,6 +123,14 @@ export default {
       this.filename = path.split(/(\\|\/)/g).pop();
       console.log(this.filename)
     },
+    findFile2() {
+      console.log("finding file name")
+      const fileInput = document.querySelector('#fakturagrunnlag');
+      const path = fileInput.value
+      this.filename2 = path.split(/(\\|\/)/g).pop();
+      console.log(this.filename2)
+    },
+    
     showUploads() {
       // check if all three inputs are not null
       if (this.company && this.year && this.month) {
