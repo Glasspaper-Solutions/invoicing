@@ -61,16 +61,32 @@
     <div class="column uploads">
       <div class="subuploads" v-if="showUploads()">
         <p v-if="showSalary()">Importere visma lønn</p>
-        <form v-if="showSalary()" action="/action_page.php" v-on:submit="sendLønn()">
-          <input type="file" id="visma-lønn" name="VismaLønn">
-          <input type="submit">
-        </form>
+        <div class="visma-lønn-container" v-if="showSalary()">
+          <div class="custom-file-upload">
+            <label class="visma-lønn-label" for="visma-lønn">
+              <div class="clickable-area">{{ buttonText }}</div>
+            </label>
+            <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
+          </div>
+          <p class="filename">{{ filename }}</p>
+          <input class="submit-button" type="submit">
+        </div>
+        <!-- distribute coverage contributions -->
         <p v-if="showCoverage()">Fordele dekningsbidrag</p>
-        <button v-if="showCoverage()">Fordel</button>
-        <p v-if="showInvoice()">Importere fakturagrunnlag</p>
-        <form v-if="showInvoice()" action="/action_page.php" v-on:submit="sendFaktura()">
-          <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag">
-          <input type="submit">
+        <button v-if="showCoverage()" class="fordel-dekningsbidrag">Fordel</button>
+        <!-- import invoice -->
+        <form action="/action_page.php" v-if="showInvoice()">
+          <p>Importere fakturagrunnlag</p>
+          <div class="invoice-container">
+            <div class="custom-file-upload">
+              <label class="invoice-label" for="fakturagrunnlag">
+                <div class="clickable-area">{{ buttonText }}</div>
+              </label>
+              <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag" @change="findFile()" />
+            </div>
+            <p class="filename">{{ filename }}</p>
+            <input class="submit-button" type="submit">
+          </div>
         </form>
       </div>
     </div>
@@ -109,8 +125,8 @@ export default {
         "Desember",
       ],
       month: null,
-      buttonText: 'Velg fil',
-      filename: 'Ingen fil valgt',
+      buttonText: "Velg fil",
+      filename: "Ingen fil valgt",
       log: [],
       // load json data from file
       data: Users,
@@ -118,15 +134,12 @@ export default {
     };
   },
   methods: {
-    companyChanged() {
-      console.log(this.company);
-    },
     findFile() {
-      console.log("finding file name")
-      const fileInput = document.querySelector('#visma-lønn');
-      const path = fileInput.value
+      console.log("finding file name");
+      const fileInput = document.querySelector("#visma-lønn");
+      const path = fileInput.value;
       this.filename = path.split(/(\\|\/)/g).pop();
-      console.log(this.filename)
+      console.log(this.filename);
     },
     showUploads() {
       // check if all three inputs are not null
@@ -155,6 +168,9 @@ export default {
       link.click();
     },
     showInvoice() {
+      if (this.company == null) {
+        return false;
+      }
       // check if "invoice" is in array without using includes()
       for (var i = 0; i < this.company.applications.length; i++) {
         if (this.company.applications[i] == "invoice") {
@@ -163,6 +179,9 @@ export default {
       }
     },
     showCoverage() {
+      if (this.company == null) {
+        return false;
+      }
       // check if "coverage" is in array without using includes()
       for (var i = 0; i < this.company.applications.length; i++) {
         if (this.company.applications[i] == "coverage") {
@@ -171,6 +190,9 @@ export default {
       }
     },
     showSalary() {
+      if (this.company == null) {
+        return false;
+      }
       // check if "salary" is in array without using includes()
       for (var i = 0; i < this.company.applications.length; i++) {
         if (this.company.applications[i] == "salary") {
