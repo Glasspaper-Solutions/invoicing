@@ -24,6 +24,7 @@
           id="year"
           class="input-area"
           v-model="year"
+          type="number"
           placeholder="Skriv år"
         />
       </div>
