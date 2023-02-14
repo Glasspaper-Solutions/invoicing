@@ -45,20 +45,24 @@
     </div>
     <div class="column uploads" v-if="showUploads()">
       <p>Importere visma lønn</p>
-      <form action="/action_page.php">
+      <form action="/action_page.php" v-on:submit="sendLønn()">
         <input type="file" id="visma-lønn" name="VismaLønn">
         <input type="submit">
       </form>
       <p>Fordele dekningsbidrag</p>
       <button>Fordel</button>
       <p>Importere fakturagrunnlag</p>
-      <form action="/action_page.php">
+      <form action="/action_page.php" v-on:submit="sendFaktura()">
         <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag">
         <input type="submit">
       </form>
     </div>
     <div class="column log">
-      <!--content-->
+      <!--log window-->
+      <p>Logg</p>
+      <div class="log-window">
+        <p v-for="log in log" :key="log">{{ log }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -86,6 +90,7 @@ export default {
         "Desember",
       ],
       month: null,
+      log: [],
     };
   },
   methods: {
@@ -97,6 +102,14 @@ export default {
       if (this.company && this.year && this.month) {
         return true;
       }
+    },
+    sendLønn() {
+      var string = `${this.company}:${this.month}:${this.year}:innsending:sendt inn lønn`;
+      this.log.push(string);
+    },
+    sendFaktura() {
+      var string = `${this.company}:${this.month}:${this.year}:innsending:sendt inn faktura`;
+      this.log.push(string);
     },
   },
 };
