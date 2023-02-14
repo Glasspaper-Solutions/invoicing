@@ -45,17 +45,30 @@
     </div>
     <div class="column uploads">
       <div class="subuploads" v-if="showUploads()">
+        <!-- import payment -->
         <p>Importere visma lønn</p>
-        <form action="/action_page.php" v-on:submit="sendLønn()">
-          <input type="file" id="visma-lønn" name="VismaLønn">
-          <input type="submit">
-        </form>
+        <div class="visma-lønn-container">
+          <div class="custom-file-upload">
+              <label class="visma-lønn-label" for="visma-lønn"><div class="clickable-area">{{ buttonText }}</div></label>
+              <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()"/>
+          </div>
+          <p class="filename">{{ filename }}</p>
+          <input class="submit-button" type="submit">
+        </div>
+          <!-- distribute coverage contributions -->
         <p>Fordele dekningsbidrag</p>
-        <button>Fordel</button>
-        <p>Importere fakturagrunnlag</p>
-        <form action="/action_page.php" v-on:submit="sendFaktura()">
-          <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag">
-          <input type="submit">
+        <button class="fordel-dekningsbidrag">Fordel</button>
+        <!-- import invoice -->
+        <form action="/action_page.php">
+          <p>Importere fakturagrunnlag</p>
+          <div class="invoice-container">  
+            <div class="custom-file-upload">
+                <label class="invoice-label" for="fakturagrunnlag"><div class="clickable-area">{{ buttonText }}</div></label>
+                <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag" @change="findFile()"/> 
+            </div>
+            <p class="filename" >{{ filename }}</p>
+            <input class="submit-button" type="submit">
+          </div>
         </form>
       </div>
     </div>
@@ -93,12 +106,21 @@ export default {
         "Desember",
       ],
       month: null,
+      buttonText: 'Velg fil',
+      filename: 'Ingen fil valgt',
       log: [],
     };
   },
   methods: {
     companyChanged() {
       console.log(this.company);
+    },
+    findFile() {
+      console.log("finding file name")
+      const fileInput = document.querySelector('#visma-lønn');
+      const path = fileInput.value
+      this.filename = path.split(/(\\|\/)/g).pop();
+      console.log(this.filename)
     },
     showUploads() {
       // check if all three inputs are not null
