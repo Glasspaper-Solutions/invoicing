@@ -1,6 +1,21 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
-  <div class="container">
+  <div class="select-user" v-if="selectedUser == null">
+    <!--select user option from data-->
+    <label for="user">Velg bruker</label>
+    <select
+      id="user"
+      class="dropdown"
+      v-model="selectedUser"
+      @change="userChanged"
+    >
+      <option value="" disabled>Velg en bruker</option>
+      <option v-for="user in data.users" :key="user" :value="user">
+        {{ user.name }}
+      </option>
+    </select>
+  </div>
+  <div class="container" v-if="selectedUser != null">
     <div class="column inputs">
       <!-- Company selection -->
       <div class="company">
@@ -12,8 +27,8 @@
           @change="companyChanged"
         >
           <option value="" disabled>Velg et selskap</option>
-          <option v-for="company in companies" :key="company" :value="company">
-            {{ company }}
+          <option v-for="company in selectedUser.companies" :key="company" :value="company" v-bind="company">
+            {{ company.name }}
           </option>
         </select>
       </div>
@@ -45,15 +60,15 @@
     </div>
     <div class="column uploads">
       <div class="subuploads" v-if="showUploads()">
-        <p>Importere visma lønn</p>
-        <form action="/action_page.php" v-on:submit="sendLønn()">
+        <p v-if="company.includes('salary')">Importere visma lønn</p>
+        <form v-if="company.includes('salary')" action="/action_page.php" v-on:submit="sendLønn()">
           <input type="file" id="visma-lønn" name="VismaLønn">
           <input type="submit">
         </form>
-        <p>Fordele dekningsbidrag</p>
-        <button>Fordel</button>
-        <p>Importere fakturagrunnlag</p>
-        <form action="/action_page.php" v-on:submit="sendFaktura()">
+        <p v-if="company.includes('coverage')">Fordele dekningsbidrag</p>
+        <button v-if="company.includes('coverage')">Fordel</button>
+        <p v-if="company.includes('invoice')">Importere fakturagrunnlag</p>
+        <form v-if="company.includes('invoice')" action="/action_page.php" v-on:submit="sendFaktura()">
           <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag">
           <input type="submit">
         </form>
@@ -71,12 +86,13 @@
 </template>
 
 <script>
+import Users from "./assets/data/users";
+
 export default {
   name: "App",
   data() {
     return {
       company: null,
-      companies: ["Kims", "Lays", "Walkers"],
       year: null,
       months: [
         "Januar",
@@ -94,6 +110,9 @@ export default {
       ],
       month: null,
       log: [],
+      // load json data from file
+      data: Users,
+      selectedUser: null,
     };
   },
   methods: {
