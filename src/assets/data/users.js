@@ -31,6 +31,22 @@ export default {
                     applications: ["coverage", "invoice"],
                 },
             ],
-        }
+        },
+        {
+            name: "Eugenie Kleivstul",
+            role: "user",
+            companies: [
+                {
+                    id: "1",
+                    name: "Kims As",
+                    applications: ["coverage", "salary", "invoice"],
+                },
+                {
+                    id: "2",
+                    name: "Sørlandschips As",
+                    applications: ["invoice"],
+                },
+            ]
+        },
     ],
 };
