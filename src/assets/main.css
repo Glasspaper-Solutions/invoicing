@@ -25,21 +25,20 @@ body {
 }
 
 label {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #000000;
+  font-size: 16px;
   text-align: center;
+  font: 'lato', sans-serif;
 }
 
 .year, .company, .month {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #000000;
-  text-align: center;
+  color: rgb(40, 64, 149);
+  text-align: left;
   align-items: center;
   width: 100%;
   align-items: center;
   margin-top: 10%;
+  font-size: 20px;
+  
 }
 
 input::-webkit-outer-spin-button,
@@ -58,7 +57,7 @@ input[type=number] {
     -webkit-appearance:textfield;
     -moz-appearance:textfield;
     appearance: none;
-    font: 15px/1 'Open Sans', sans-serif;
+    font: 15px/1 'lato', sans-serif;
     color: #40414F;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -80,13 +79,14 @@ input[type=number] {
   grid-auto-rows: auto;
   grid-template-columns: 1fr 2fr 1fr;
   width: 100%;
+
 }
 
 /* styles the 'velg fil' button */
 .custom-file-upload, .submit-button {
   display: inline-block;
   background-color: #ffffff;
-  color: #000000;
+  color: rgb(112, 112, 112);
   border: none;
   width: 100%;
   border: 1px solid rgb(112, 112, 112);
@@ -124,6 +124,7 @@ input[type=number] {
   padding-top: 0.75vw;
   padding-left: 1vw;
   padding-right: 1vw;
+  font: 'lato', sans-serif;
 }
 
 .fordel-dekningsbidrag {
@@ -146,32 +147,34 @@ input[type=number] {
 }
 
 .log p {
-  color: #000000;
-  text-align: center;
+  color: rgb(40, 64, 149);
+  text-align: left;
+  font: 'lato';
+
 }
 
 .log-window p {
-  color: #ffffff;
+  color: rgb(40, 64, 149);
   text-align: center;
 }
 
 .log-window {
   text-align: center;
   overflow:scroll;
-  background-color: #000000;
-  color: white;
-  border-radius: 4%;
+  border-radius: 1%;
   height: 100%;
   max-height: 30vh;
   scroll-behavior: smooth;
+  border-style: solid;
+  color: rgb(40, 64, 149);
 }
 
 .download {
   /* better button styling */
-  background-color: #EBEBEB;
+  background-color: rgb(237, 166, 66);
   border: none;
-  color: #000000;
-  padding: 15px 32px;
+  color: black;
+  padding: 15px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -179,4 +182,12 @@ input[type=number] {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 0.3rem;
+  width: 160px;
+}
+
+.border{
+  border-style: solid;
+  color:rgb(40, 64, 149);
+  border-style: 20;
+  border-radius: 20;
 }
