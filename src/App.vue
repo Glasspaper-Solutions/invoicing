@@ -15,8 +15,8 @@
       </option>
     </select>
   </div>
-  <div @click="login=true">
-    <img class="settings" src="./assets/settings-icon.svg" alt="innstillinger" v-if="selectedUser != null">
+  <div @click="login=true" v-if="selectedUser != null">
+    <img class="settings" src="./assets/settings-icon.svg" alt="innstillinger">
   </div>
   <div class="container" v-if="selectedUser != null && login == false">
     <div class="column inputs">
