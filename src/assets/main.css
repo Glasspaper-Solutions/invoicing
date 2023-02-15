@@ -8,7 +8,6 @@
 body {
   background-color: rgb(244, 245, 247);
   background:url('./bakgrunnsbilde.svg') no-repeat;
-  background-size: contain;
 }
 
 /* create container layout with 3 columns each being 1/3  */
@@ -246,4 +245,16 @@ h1 {
 .settings button:active {
   background-color: rgb(40, 64, 149);
   color: white;
+
+.select-user {
+  color: rgb(40, 64, 149);
+  margin-left: 1vw;
+  margin-right: 70vw;
+  margin-top: 20vw;
+}
+
+.select-user > label {
+  font-size: larger;
+  font-weight: bolder;
+  margin-left: 1vw;
 }
