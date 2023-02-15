@@ -60,22 +60,26 @@
     </div>
     <div class="column uploads">
       <div class="subuploads" v-if="showUploads()">
-        <p v-if="showSalary()">Importere visma lønn</p>
-        <div class="visma-lønn-container" v-if="showSalary()">
-          <div class="custom-file-upload">
-            <label class="visma-lønn-label" for="visma-lønn">
-              <div class="clickable-area">{{ buttonText }}</div>
-            </label>
-            <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
+        <form action="/action_page.php" @submit="sendLønn()">
+          <p v-if="showSalary()">Importere visma lønn</p>
+          <div class="visma-lønn-container" v-if="showSalary()">
+            <div class="custom-file-upload">
+                <label class="visma-lønn-label" for="visma-lønn">
+                  <div class="clickable-area">{{ buttonText }}</div>
+                </label>
+                <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
+            </div>
+            <p class="filename">{{ filename }}</p>
+            <input class="submit-button" type="submit">
           </div>
           <p class="filename">{{ filename }}</p>
           <input class="submit-button" type="submit" v-if="filename != 'Ingen fil valgt'">
-        </div>
+        </form>
         <!-- distribute coverage contributions -->
         <p v-if="showCoverage()">Fordele dekningsbidrag</p>
         <button v-if="showCoverage()" class="fordel-dekningsbidrag">Fordel</button>
         <!-- import invoice -->
-        <form action="/action_page.php" v-if="showInvoice()">
+        <form action="/action_page.php" v-if="showInvoice()" @submit="sendFaktura()">
           <p>Importere fakturagrunnlag</p>
           <div class="invoice-container">
             <div class="custom-file-upload">
