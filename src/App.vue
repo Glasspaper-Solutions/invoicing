@@ -17,6 +17,7 @@
   </div>
   <div class="container" v-if="selectedUser != null">
     <div class="column inputs">
+      <h1>Regnskap <br>Integrasjon</h1>
       <!-- Company selection -->
       <div class="company">
         <label for="company">Selskap</label>
