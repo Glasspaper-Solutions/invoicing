@@ -70,7 +70,7 @@
                 <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
             </div>
             <p class="filename">{{ filename }}</p>
-            <input class="submit-button" type="submit" v-if="filename != 'Ingen fil valgt'">
+            <input class="submit-button" type="submit" value="Send fil" v-if="filename != 'Ingen fil valgt'">
           </div>
         </form>
         <!-- distribute coverage contributions -->
@@ -85,7 +85,7 @@
                 <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag" @change="findFile2()"/> 
             </div>
             <p class="filename" >{{ filename2 }}</p>
-            <input class="submit-button" type="submit" v-if="filename2 != 'Ingen fil valgt'">
+            <input class="submit-button" type="submit" value="Send fil" v-if="filename2 != 'Ingen fil valgt'">
           </div>
         </form>
       </div>
@@ -125,9 +125,9 @@ export default {
         "Desember",
       ],
       month: null,
-      buttonText: 'Velg fil',
-      filename: 'Ingen fil valgt',
-      filename2: 'Ingen fil valgt',
+      buttonText: "Velg fil",
+      filename: "Ingen fil valgt",
+      filename2: "Ingen fil valgt",
       log: [],
       // load json data from file
       data: Users,
@@ -143,13 +143,13 @@ export default {
       console.log(this.filename);
     },
     findFile2() {
-      console.log("finding file name")
-      const fileInput = document.querySelector('#fakturagrunnlag');
-      const path = fileInput.value
+      console.log("finding file name");
+      const fileInput = document.querySelector("#fakturagrunnlag");
+      const path = fileInput.value;
       this.filename2 = path.split(/(\\|\/)/g).pop();
-      console.log(this.filename2)
+      console.log(this.filename2);
     },
-    
+
     showUploads() {
       // check if all three inputs are not null
       if (this.company && this.year && this.month) {
