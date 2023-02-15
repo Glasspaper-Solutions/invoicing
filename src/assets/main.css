@@ -245,16 +245,17 @@ h1 {
 .settings button:active {
   background-color: rgb(40, 64, 149);
   color: white;
+}
 
 .select-user {
   color: rgb(40, 64, 149);
   margin-left: 1vw;
-  margin-right: 70vw;
+  margin-right: 60vw;
   margin-top: 20vw;
 }
 
 .select-user > label {
   font-size: larger;
-  font-weight: bolder;
   margin-left: 1vw;
+  font-size: 2rem;
 }
