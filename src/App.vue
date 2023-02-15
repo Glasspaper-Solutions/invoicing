@@ -19,6 +19,7 @@
     <div class="column inputs">
       <h1>Regnskap <br>Integrasjon</h1>
       <!-- Company selection -->
+      <div class="border">
       <div class="company">
         <label for="company">Selskap</label>
         <select
@@ -59,6 +60,7 @@
         </select>
       </div>
     </div>
+    </div>
     <div class="column uploads">
       <div class="subuploads" v-if="showUploads()">
         <form action="/action_page.php" @submit="sendLønn()">
@@ -75,7 +77,7 @@
           </div>
         </form>
         <!-- distribute coverage contributions -->
-        <p v-if="showCoverage()">Fordele dekningsbidrag</p>
+        <p v-if="showCoverage()" style="margin-top: 90px">Fordele dekningsbidrag</p>
         <button v-if="showCoverage()" class="fordel-dekningsbidrag">Fordel</button>
         <!-- import invoice -->
         <form action="/action_page.php" v-if="showInvoice()" @submit="sendFaktura()">
