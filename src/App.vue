@@ -81,7 +81,7 @@
         </form>
         <!-- distribute coverage contributions -->
         <p v-if="showCoverage()" style="margin-top: 90px">Fordele dekningsbidrag</p>
-        <button v-if="showCoverage()" class="fordel-dekningsbidrag">Fordel</button>
+        <input type="checkbox" v-if="showCoverage()" class="fordel-dekningsbidrag" v-model="coverage" v-on:change="logCoverage()">
         <!-- import invoice -->
         <form action="javascript:void(0);" v-if="showInvoice()" @submit="sendFaktura()">
           <p>Importere fakturagrunnlag</p>
@@ -119,6 +119,7 @@ export default {
   name: "App",
   data() {
     return {
+      coverage: false,
       login: false,
       company: null,
       year: null,
@@ -161,7 +162,6 @@ export default {
       this.filename2 = path.split(/(\\|\/)/g).pop();
       console.log(this.filename2);
     },
-
     showUploads() {
       // check if all three inputs are not null
       if (this.company && this.year && this.month) {
@@ -219,6 +219,16 @@ export default {
         if (this.company.applications[i] == "salary") {
           return true;
         }
+      }
+    },
+    // log coverage value
+    logCoverage() {
+      if (this.coverage == true) {
+        var string = `${this.company.name}:${this.month}:${this.year}:fordeling:dekningsbidrag fordeles`;
+        this.log.push(string);
+      } else {
+        var str = `${this.company.name}:${this.month}:${this.year}:fordeling:dekningsbidrag fordeles ikke`;
+        this.log.push(str);
       }
     },
   },
