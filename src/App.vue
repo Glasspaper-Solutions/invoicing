@@ -1,6 +1,6 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
-  <div class="select-user" v-if="selectedUser == null && login == null">
+  <div class="select-user" v-if="selectedUser == null && login == false">
     <!--select user option from data-->
     <label for="user">Velg bruker</label>
     <select
@@ -15,8 +15,10 @@
       </option>
     </select>
   </div>
-  <img class="settings" src="./assets/settings-icon.svg" alt="innstillinger">
-  <div class="container" v-if="selectedUser != null && login == null">
+  <div @click="login=true">
+    <img class="settings" src="./assets/settings-icon.svg" alt="innstillinger" v-if="selectedUser != null">
+  </div>
+  <div class="container" v-if="selectedUser != null && login == false">
     <div class="column inputs">
       <h1>Regnskap <br>Integrasjon</h1>
       <!-- Company selection -->
@@ -103,10 +105,10 @@
       <button @click="downloadLog()" class="download">Last ned logg</button>
     </div>
   </div>
-  <div class="settings" v-if="login != null">
+  <div class="settings" v-if="login == true">
     <!--log out and back button-->
-    <button @click="logOut()" class="log-out">Logg ut</button>
-    <button @click="back()" class="back">Tilbake</button>
+    <button @click="selectedUser=null, login = false" class="log-out">Logg ut</button>
+    <button @click="login = false" class="back">Tilbake</button>
   </div>
 </template>
 
@@ -117,7 +119,7 @@ export default {
   name: "App",
   data() {
     return {
-      login: null,
+      login: false,
       company: null,
       year: null,
       months: [
