@@ -218,3 +218,7 @@ h1 {
   margin-bottom: 10%;
   color: rgb(40, 64, 149)
 }
+
+.settings {
+  width: 7vw;
+}

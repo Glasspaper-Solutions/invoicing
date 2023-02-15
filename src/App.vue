@@ -15,6 +15,7 @@
       </option>
     </select>
   </div>
+  <img class="settings" src="./assets/settings-icon.svg" alt="innstillinger">
   <div class="container" v-if="selectedUser != null && login == null">
     <div class="column inputs">
       <h1>Regnskap <br>Integrasjon</h1>
