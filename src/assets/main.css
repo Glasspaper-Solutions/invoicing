@@ -22,6 +22,7 @@ body {
   justify-content: space-between;
   width: 33.33%;
   margin: 5%;
+  margin-top: 10%;
 }
 
 label {
@@ -39,7 +40,6 @@ label {
   align-items: center;
   width: 100%;
   align-items: center;
-  margin-top: 10%;
 }
 
 input::-webkit-outer-spin-button,
@@ -117,6 +117,7 @@ input[type=number] {
 
 .uploads {
   color: rgb(112, 112, 112);
+  margin-top: 11vw;
 }
 
 .filename {

@@ -72,6 +72,8 @@
             <p class="filename">{{ filename }}</p>
             <input class="submit-button" type="submit">
           </div>
+          <p class="filename">{{ filename }}</p>
+          <input class="submit-button" type="submit" v-if="filename != 'Ingen fil valgt'">
         </form>
         <!-- distribute coverage contributions -->
         <p v-if="showCoverage()">Fordele dekningsbidrag</p>
@@ -81,13 +83,11 @@
           <p>Importere fakturagrunnlag</p>
           <div class="invoice-container">
             <div class="custom-file-upload">
-              <label class="invoice-label" for="fakturagrunnlag">
-                <div class="clickable-area">{{ buttonText }}</div>
-              </label>
-              <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag" @change="findFile()" />
+                <label class="invoice-label" for="fakturagrunnlag"><div class="clickable-area">{{ buttonText }}</div></label>
+                <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag" @change="findFile2()"/> 
             </div>
-            <p class="filename">{{ filename }}</p>
-            <input class="submit-button" type="submit">
+            <p class="filename" >{{ filename2 }}</p>
+            <input class="submit-button" type="submit" v-if="filename2 != 'Ingen fil valgt'">
           </div>
         </form>
       </div>
@@ -127,8 +127,9 @@ export default {
         "Desember",
       ],
       month: null,
-      buttonText: "Velg fil",
-      filename: "Ingen fil valgt",
+      buttonText: 'Velg fil',
+      filename: 'Ingen fil valgt',
+      filename2: 'Ingen fil valgt',
       log: [],
       // load json data from file
       data: Users,
@@ -143,6 +144,14 @@ export default {
       this.filename = path.split(/(\\|\/)/g).pop();
       console.log(this.filename);
     },
+    findFile2() {
+      console.log("finding file name")
+      const fileInput = document.querySelector('#fakturagrunnlag');
+      const path = fileInput.value
+      this.filename2 = path.split(/(\\|\/)/g).pop();
+      console.log(this.filename2)
+    },
+    
     showUploads() {
       // check if all three inputs are not null
       if (this.company && this.year && this.month) {
