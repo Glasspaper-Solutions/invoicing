@@ -222,6 +222,31 @@ h1 {
   width: 7vw;
 }
 
+.settings button {
+  background-color: rgb(237, 166, 66);
+  border: none;
+  color: black;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  width: 160px;
+}
+
+.settings button:hover {
+  background-color: rgb(40, 64, 149);
+  color: white;
+}
+
+.settings button:active {
+  background-color: rgb(40, 64, 149);
+  color: white;
+}
+
 .select-user {
   color: rgb(40, 64, 149);
   margin-left: 1vw;
@@ -230,7 +255,7 @@ h1 {
 }
 
 .select-user > label {
-font-size: larger;
-margin-left: 1vw;
-font-size: 2rem;
+  font-size: larger;
+  margin-left: 1vw;
+  font-size: 2rem;
 }
