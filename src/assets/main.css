@@ -28,7 +28,7 @@ body {
 }
 
 label {
-  font-size: 16px;
+  font-size: 1rem;
   text-align: center;
   font: 'lato', sans-serif;
 }
@@ -40,7 +40,9 @@ label {
   width: 100%;
   align-items: center;
   margin-top: 10%;
-  font-size: 20px;
+  font-size: 1rem;
+  margin-bottom: 11%;
+  font: 'lato';
 }
 
 input::-webkit-outer-spin-button,
@@ -59,14 +61,14 @@ input[type=number] {
     -webkit-appearance:textfield;
     -moz-appearance:textfield;
     appearance: none;
-    font: 15px/1 'lato', sans-serif;
+    font: 1rem, 'lato', sans-serif;
     color: #40414F;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 99%;
     background-color: #EBEBEB;
     border: none;
-    padding: 10px 11px 11px 11px;
+    padding: 11px;
     border-radius: 0.3rem;
     box-shadow: none;
     outline: none;
@@ -81,25 +83,25 @@ input[type=number] {
   grid-auto-rows: auto;
   grid-template-columns: 1fr 2fr 1fr;
   width: 100%;
-
 }
 
 /* styles the 'velg fil' button */
 .custom-file-upload, .submit-button {
   display: inline-block;
-  background-color: #ffffff;
-  color: rgb(112, 112, 112);
+  background-color: #EBEBEB;
+  color: rgb(0, 0, 0);
   border: none;
   width: 100%;
-  border: 1px solid rgb(112, 112, 112);
   cursor: pointer;
-}
+  font:'lato', sans-serif;
+};
 
 .custom-file-upload:hover {
   background-color: #0069d9;
 }
 .custom-file-upload:active {
-  background-color: #0053ba;
+  background-color: rgb(40, 64, 149);
+  color: rgb(244, 245, 247);
 }
 
 #visma-lønn {
@@ -115,15 +117,18 @@ input[type=number] {
   text-align: center;
   cursor: pointer;
   font-size: 12px;
+  font: 'lato';
+  color: rgb(112, 112, 112)
 }
 
 .uploads {
   color: rgb(112, 112, 112);
-  margin-top: 11vw;
+  margin-top: 19%;
+  font-family: 'lato';
 }
 
 .filename {
-  font-size: 13px;
+  font-size: 1rem;
   padding-top: 0.75vw;
   padding-left: 1vw;
   padding-right: 1vw;
@@ -131,13 +136,17 @@ input[type=number] {
 }
 
 .fordel-dekningsbidrag {
-  background-color: white;
-  border: 1px solid rgb(112, 112, 112);
+  background-color: #EBEBEB;
+  border: none;
   padding: 6px 12px;
   cursor: pointer;
+  color:rgb(112, 112, 112);
+  border-radius: 1% ;
+  margin-bottom: 90px;
 }
 
 .dropdown {
+   font-family: 'lato';
     width: 99%;
     background-color: #EBEBEB;
     border: none;
@@ -147,12 +156,14 @@ input[type=number] {
     outline: none;
     margin: 0.5%;
     box-sizing: border-box;
+    font: 'lato';
 }
 
 .log p {
   color: rgb(40, 64, 149);
   text-align: left;
   font: 'lato';
+  font-size: 27px;
 
 }
 
@@ -170,6 +181,7 @@ input[type=number] {
   scroll-behavior: smooth;
   border-style: solid;
   color: rgb(40, 64, 149);
+  border-width: 5px
 }
 
 .download {
@@ -192,11 +204,17 @@ input[type=number] {
   border-style: solid;
   color:rgb(40, 64, 149);
   border-style: 20;
-  border-radius: 20;
+  border-radius: 5px;
+  border-width: 5px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
 }
 
 h1 {
-  font-size: 27px;
+  font-size: 2rem;
   margin-top: -10%;
   margin-bottom: 10%;
+  color: rgb(40, 64, 149)
 }
