@@ -70,10 +70,8 @@
                 <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
             </div>
             <p class="filename">{{ filename }}</p>
-            <input class="submit-button" type="submit">
+            <input class="submit-button" type="submit" v-if="filename != 'Ingen fil valgt'">
           </div>
-          <p class="filename">{{ filename }}</p>
-          <input class="submit-button" type="submit" v-if="filename != 'Ingen fil valgt'">
         </form>
         <!-- distribute coverage contributions -->
         <p v-if="showCoverage()">Fordele dekningsbidrag</p>
