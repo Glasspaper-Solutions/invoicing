@@ -153,14 +153,22 @@ export default {
       const fileInput = document.querySelector("#visma-lønn");
       const path = fileInput.value;
       this.filename = path.split(/(\\|\/)/g).pop();
+      if (this.filename === undefined) {
+        this.filename = "No file selected";
+      }
       console.log(this.filename);
     },
     findFile2() {
       console.log("finding file name");
       const fileInput = document.querySelector("#fakturagrunnlag");
       const path = fileInput.value;
-      this.filename2 = path.split(/(\\|\/)/g).pop();
-      console.log(this.filename2);
+      // Check if the input is empty
+      if (path) {
+        this.filename2 = path.split(/(\\|\/)/g).pop();
+        console.log(this.filename2);
+      } else {
+        console.log("No file was selected");
+      }
     },
     showUploads() {
       // check if all three inputs are not null
@@ -198,6 +206,7 @@ export default {
           return true;
         }
       }
+      return false;
     },
     showCoverage() {
       if (this.company == null) {
@@ -209,6 +218,7 @@ export default {
           return true;
         }
       }
+      return false;
     },
     showSalary() {
       if (this.company == null) {
@@ -220,15 +230,18 @@ export default {
           return true;
         }
       }
+      return false;
     },
     // log coverage value
     logCoverage() {
       if (this.coverage == true) {
         var string = `${this.company.name}:${this.month}:${this.year}:fordeling:dekningsbidrag fordeles`;
         this.log.push(string);
-      } else {
+      } else if (this.coverage == false) {
         var str = `${this.company.name}:${this.month}:${this.year}:fordeling:dekningsbidrag fordeles ikke`;
         this.log.push(str);
+      } else {
+        console.log("error");
       }
     },
   },
