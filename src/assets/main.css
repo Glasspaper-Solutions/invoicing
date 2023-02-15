@@ -181,3 +181,9 @@ input[type=number] {
   cursor: pointer;
   border-radius: 0.3rem;
 }
+
+h1 {
+  font-size: 27px;
+  margin-top: -10%;
+  margin-bottom: 10%;
+}
