@@ -1,6 +1,6 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
-  <div class="select-user" v-if="selectedUser == null">
+  <div class="select-user" v-if="selectedUser == null && login == null">
     <!--select user option from data-->
     <label for="user">Velg bruker</label>
     <select
@@ -15,7 +15,7 @@
       </option>
     </select>
   </div>
-  <div class="container" v-if="selectedUser != null">
+  <div class="container" v-if="selectedUser != null && login == null">
     <div class="column inputs">
       <h1>Regnskap <br>Integrasjon</h1>
       <!-- Company selection -->
@@ -102,6 +102,11 @@
       <button @click="downloadLog()" class="download">Last ned logg</button>
     </div>
   </div>
+  <div class="settings" v-if="login != null">
+    <!--log out and back button-->
+    <button @click="logOut()" class="log-out">Logg ut</button>
+    <button @click="back()" class="back">Tilbake</button>
+  </div>
 </template>
 
 <script>
@@ -111,6 +116,7 @@ export default {
   name: "App",
   data() {
     return {
+      login: null,
       company: null,
       year: null,
       months: [
