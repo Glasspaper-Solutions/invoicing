@@ -61,7 +61,7 @@
     </div>
     <div class="column uploads">
       <div class="subuploads" v-if="showUploads()">
-        <form action="/action_page.php" @submit="sendLønn()">
+        <form action="javascript:void(0);" @submit="sendLønn()">
           <p v-if="showSalary()">Importere visma lønn</p>
           <div class="visma-lønn-container" v-if="showSalary()">
             <div class="custom-file-upload">
@@ -78,7 +78,7 @@
         <p v-if="showCoverage()">Fordele dekningsbidrag</p>
         <button v-if="showCoverage()" class="fordel-dekningsbidrag">Fordel</button>
         <!-- import invoice -->
-        <form action="/action_page.php" v-if="showInvoice()" @submit="sendFaktura()">
+        <form action="javascript:void(0);" v-if="showInvoice()" @submit="sendFaktura()">
           <p>Importere fakturagrunnlag</p>
           <div class="invoice-container">
             <div class="custom-file-upload">
