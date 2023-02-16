@@ -20,49 +20,49 @@
   </div>
   <div class="container" v-if="selectedUser != null && login == false">
     <div class="column inputs">
-      <h1>Regnskap <br>Integrasjon</h1>
+      <h1>Regnskap Integrasjon</h1>
       <!-- Company selection -->
       <div class="border">
-      <div class="company">
-        <label for="company">Selskap</label>
-        <select
-          id="company"
-          class="dropdown"
-          v-model="company"
-          @change="companyChanged"
-        >
-          <option value="" disabled>Velg et selskap</option>
-          <option v-for="company in selectedUser.companies" :key="company" :value="company" v-bind="company">
-            {{ company.name }}
-          </option>
-        </select>
+        <div class="company">
+          <label for="company">Selskap</label>
+          <select
+            id="company"
+            class="dropdown"
+            v-model="company"
+            @change="companyChanged"
+          >
+            <option value="" disabled>Velg et selskap</option>
+            <option v-for="company in selectedUser.companies" :key="company" :value="company" v-bind="company">
+              {{ company.name }}
+            </option>
+          </select>
+        </div>
+        <!-- Year input -->
+        <div class="year">
+          <label for="year">År</label>
+          <input
+            id="year"
+            class="input-area"
+            v-model="year"
+            type="number"
+            placeholder="Skriv år"
+          />
+        </div>
+        <!--month selection-->
+        <div class="month">
+          <label for="month">Måned</label>
+          <select
+            class="dropdown"
+            id="month"
+            v-model="month"
+          >
+            <option value="" disabled>Velg en måned</option>
+            <option v-for="month in months" :key="month" :value="month">
+              {{ month }}
+            </option>
+          </select>
+        </div>
       </div>
-      <!-- Year input -->
-      <div class="year">
-        <label for="year">År</label>
-        <input
-          id="year"
-          class="input-area"
-          v-model="year"
-          type="number"
-          placeholder="Skriv år"
-        />
-      </div>
-      <!--month selection-->
-      <div class="month">
-        <label for="month">Måned</label>
-        <select
-          class="dropdown"
-          id="month"
-          v-model="month"
-        >
-          <option value="" disabled>Velg en måned</option>
-          <option v-for="month in months" :key="month" :value="month">
-            {{ month }}
-          </option>
-        </select>
-      </div>
-    </div>
     </div>
     <div class="column uploads">
       <div class="subuploads" v-if="showUploads()">
@@ -98,7 +98,6 @@
     </div>
     <div class="column log">
       <!--log window-->
-      <br>
       <p class="log-title">Logg</p>
       <div class="log-window" ref="logContainer">
         <p class="log-entry" v-for="log in log" :key="log">{{ log }}</p>
