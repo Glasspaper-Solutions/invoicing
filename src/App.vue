@@ -98,6 +98,7 @@
     </div>
     <div class="column log">
       <!--log window-->
+      <br>
       <p class="log-title">Logg</p>
       <div class="log-window" ref="logContainer">
         <p class="log-entry" v-for="log in log" :key="log">{{ log }}</p>
