@@ -158,6 +158,10 @@ export default {
       const fileInput = document.querySelector("#visma-lønn");
       const path = fileInput.value;
       this.filename = path.split(/(\\|\/)/g).pop();
+      //shorten filename to max 10 characters
+      if (this.filename.length > 10) {
+        this.filename = this.filename.substring(0, 16) + "...";
+      }
       if (this.filename === undefined) {
         this.filename = "No file selected";
       }
@@ -170,6 +174,10 @@ export default {
       // Check if the input is empty
       if (path) {
         this.filename2 = path.split(/(\\|\/)/g).pop();
+        //shorten filename to max 10 characters
+        if (this.filename2.length > 10) {
+          this.filename2 = this.filename2.substring(0, 16) + "...";
+        }
         console.log(this.filename2);
       } else {
         console.log("No file was selected");
