@@ -99,7 +99,7 @@
     <div class="column log">
       <!--log window-->
       <p>Logg</p>
-      <div class="log-window">
+      <div class="log-window" ref="logContainer">
         <p v-for="log in log" :key="log">{{ log }}</p>
       </div>
       <button @click="downloadLog()" class="download">Last ned logg</button>
@@ -146,6 +146,11 @@ export default {
       data: Users,
       selectedUser: null,
     };
+  },
+  updated() {
+    this.$nextTick(() => {
+      this.$refs.logContainer.scrollTop = this.$refs.logContainer.scrollHeight;
+    });
   },
   methods: {
     findFile() {
