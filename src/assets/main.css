@@ -117,6 +117,7 @@ input[type=number] {
   font: 'lato';
   color: rgb(112, 112, 112);
   height: 100%;
+  background-color: #EBEBEB;
 }
 
 .uploads {
@@ -126,7 +127,7 @@ input[type=number] {
 
 .filename {
   font-size: 1rem;
-  padding-top: 0.75vw;
+  padding-top: 0.5vh;
   padding-left: 1vw;
   padding-right: 1vw;
   font: 'lato', sans-serif;
@@ -170,7 +171,7 @@ input[type=number] {
   font-size: 1rem
 }
 
-.border{
+.border {
   border-style: solid;
   color:rgb(40, 64, 149);
   border-radius: 5px;
@@ -189,7 +190,7 @@ input[type=number] {
 
   max-height: 40vh;
   border-width: 5px;
-  min-height: 340px;
+  min-height: 40vh;
 
   text-align: left;
   overflow: scroll;
@@ -211,7 +212,6 @@ input[type=number] {
   border-radius: 0.3rem;
   width: 160px;
 }
-
 
 h1 {
   font-size: 2rem;
