@@ -20,8 +20,10 @@ body {
 .column {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 33.33%;
   margin: 5%;
+  margin-top: 10%;
 }
 
 label {
@@ -83,7 +85,7 @@ input[type=number] {
 }
 
 /* styles the 'velg fil' button */
-.submit-button {
+.custom-file-upload, .submit-button {
   display: inline-block;
   background-color: #EBEBEB;
   color: rgb(0, 0, 0);
@@ -115,19 +117,18 @@ input[type=number] {
   cursor: pointer;
   font-size: 12px;
   font: 'lato';
-  color: rgb(112, 112, 112);
-  height: 100%;
-  background-color: #EBEBEB;
+  color: rgb(112, 112, 112)
 }
 
 .uploads {
   color: rgb(112, 112, 112);
+  margin-top: 19%;
   font-family: 'lato';
 }
 
 .filename {
   font-size: 1rem;
-  padding-top: 0.5vh;
+  padding-top: 0.75vw;
   padding-left: 1vw;
   padding-right: 1vw;
   font: 'lato', sans-serif;
@@ -161,45 +162,30 @@ input[type=number] {
   color: rgb(40, 64, 149);
   text-align: left;
   font: 'lato';
-  font-size: 27px;
-  margin-top: 7.5%;
+  font-size: 10px;
+
 }
 
 .log-window p {
   color: rgb(40, 64, 149);
   text-align: center;
-  font-size: 1rem
-}
-
-.border {
-  border-style: solid;
-  color:rgb(40, 64, 149);
-  border-radius: 5px;
-  
-  border-width: 5px;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
 }
 
 .log-window {
+  text-align: center;
+  overflow-y: scroll;
+  border-radius: 1%;
+  height: 100%;
+  max-height: 30vh;
+  scroll-behavior: smooth;
   border-style: solid;
   color: rgb(40, 64, 149);
-  border-radius: 5px;
-
-  max-height: 40vh;
-  border-width: 5px;
-  min-height: 40vh;
-
-  text-align: left;
-  overflow: scroll;
-  scroll-behavior:initial;
+  border-width: 5px
 }
 
 .download {
   /* better button styling */
-  background-color: rgb(249, 162, 30);
+  background-color: rgb(237, 166, 66);
   border: none;
   color: black;
   padding: 15px 15px;
@@ -207,15 +193,28 @@ input[type=number] {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 40px 2px;
+  margin: 4px 2px;
   cursor: pointer;
   border-radius: 0.3rem;
   width: 160px;
 }
 
+.border{
+  border-style: solid;
+  color:rgb(40, 64, 149);
+  border-style: 20;
+  border-radius: 5px;
+  border-width: 5px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+}
+
 h1 {
   font-size: 2rem;
   margin-top: -10%;
+  margin-bottom: 10%;
   color: rgb(40, 64, 149)
 }
 
