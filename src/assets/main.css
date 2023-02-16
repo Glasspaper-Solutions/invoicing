@@ -20,10 +20,8 @@ body {
 .column {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 33.33%;
   margin: 5%;
-  margin-top: 10%;
 }
 
 label {
@@ -122,7 +120,6 @@ input[type=number] {
 
 .uploads {
   color: rgb(112, 112, 112);
-  margin-top: 19%;
   font-family: 'lato';
 }
 
@@ -163,24 +160,39 @@ input[type=number] {
   text-align: left;
   font: 'lato';
   font-size: 27px;
-
+  margin-top: 7.5%;
 }
 
 .log-window p {
   color: rgb(40, 64, 149);
   text-align: center;
+  font-size: 1rem
+}
+
+.border{
+  border-style: solid;
+  color:rgb(40, 64, 149);
+  border-radius: 5px;
+  
+  border-width: 5px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
 }
 
 .log-window {
-  text-align: center;
-  overflow:scroll;
-  border-radius: 1%;
-  height: 100%;
-  max-height: 30vh;
-  scroll-behavior: smooth;
   border-style: solid;
   color: rgb(40, 64, 149);
-  border-width: 5px
+  border-radius: 5px;
+
+  max-height: 40vh;
+  border-width: 5px;
+  min-height: 340px;
+
+  text-align: left;
+  overflow: scroll;
+  scroll-behavior:initial;
 }
 
 .download {
@@ -193,28 +205,16 @@ input[type=number] {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 40px 2px;
   cursor: pointer;
   border-radius: 0.3rem;
   width: 160px;
 }
 
-.border{
-  border-style: solid;
-  color:rgb(40, 64, 149);
-  border-style: 20;
-  border-radius: 5px;
-  border-width: 5px;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
-}
 
 h1 {
   font-size: 2rem;
   margin-top: -10%;
-  margin-bottom: 10%;
   color: rgb(40, 64, 149)
 }
 
