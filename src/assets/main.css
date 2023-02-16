@@ -83,7 +83,7 @@ input[type=number] {
 }
 
 /* styles the 'velg fil' button */
-.custom-file-upload, .submit-button {
+.submit-button {
   display: inline-block;
   background-color: #EBEBEB;
   color: rgb(0, 0, 0);
@@ -115,7 +115,8 @@ input[type=number] {
   cursor: pointer;
   font-size: 12px;
   font: 'lato';
-  color: rgb(112, 112, 112)
+  color: rgb(112, 112, 112);
+  height: 100%;
 }
 
 .uploads {
