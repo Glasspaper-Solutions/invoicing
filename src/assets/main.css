@@ -40,6 +40,7 @@ label {
   font-size: 1rem;
   margin-bottom: 11%;
   font: 'lato';
+
 }
 
 input::-webkit-outer-spin-button,
@@ -50,6 +51,7 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
   -moz-appearance: textfield;
+  
 }
 
 
@@ -72,6 +74,7 @@ input[type=number] {
     margin: 0.5%;
     margin-top: 1%;
     box-sizing: border-box; 
+
 }
 
 /* create a container for the three parts of 'importere visma lønn' */
@@ -97,7 +100,7 @@ input[type=number] {
   background-color: #0069d9;
 }
 .custom-file-upload:active {
-  background-color: rgb(40, 64, 149);
+  background-color: rgb(112, 112, 112);
   color: rgb(244, 245, 247);
 }
 
@@ -121,6 +124,7 @@ input[type=number] {
 .uploads {
   color: rgb(112, 112, 112);
   font-family: 'lato';
+  padding-top: 2rem
 }
 
 .filename {
@@ -160,7 +164,6 @@ input[type=number] {
   text-align: left;
   font: 'lato';
   font-size: 27px;
-  margin-top: 7.5%;
 }
 
 .log-window p {
@@ -173,11 +176,12 @@ input[type=number] {
   border-style: solid;
   color:rgb(40, 64, 149);
   border-radius: 5px;
-  
   border-width: 5px;
+  max-height: 4vh;
+  min-height: 40vh;
   padding-left: 10%;
   padding-right: 10%;
-  padding-top: 1vw;
+  padding-top: 0.5vw;
   padding-bottom: 1vw;
 }
 
@@ -185,10 +189,9 @@ input[type=number] {
   border-style: solid;
   color: rgb(40, 64, 149);
   border-radius: 5px;
-
-  max-height: 40vh;
   border-width: 5px;
-  min-height: 340px;
+  max-height: 40vh;
+  min-height: 40vh;
 
   text-align: left;
   overflow: scroll;
@@ -219,7 +222,7 @@ h1 {
 }
 
 .settings {
-  width: 7vw;
+  width: 6rem;
 }
 
 .settings button {
