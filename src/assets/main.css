@@ -162,7 +162,7 @@ input[type=number] {
   color: rgb(40, 64, 149);
   text-align: left;
   font: 'lato';
-  font-size: 27px;
+  font-size: 10px;
 
 }
 
@@ -173,7 +173,7 @@ input[type=number] {
 
 .log-window {
   text-align: center;
-  overflow:scroll;
+  overflow-y: scroll;
   border-radius: 1%;
   height: 100%;
   max-height: 30vh;
