@@ -15,8 +15,8 @@
       </option>
     </select>
   </div>
-  <div @click="login=true">
-    <img class="settings" src="./assets/settings-icon.svg" alt="innstillinger" v-if="selectedUser != null">
+  <div @click="login=true" v-if="selectedUser != null">
+    <img class="settings" src="./assets/settings-icon.svg" alt="innstillinger">
   </div>
   <div class="container" v-if="selectedUser != null && login == false">
     <div class="column inputs">
@@ -99,9 +99,9 @@
     <div class="column log">
       <!--log window-->
       <br>
-      <p>Logg</p>
-      <div class="log-window">
-        <p v-for="log in log" :key="log">{{ log }}</p>
+      <p class="log-title">Logg</p>
+      <div class="log-window" ref="logContainer">
+        <p class="log-entry" v-for="log in log" :key="log">{{ log }}</p>
       </div>
       <button @click="downloadLog()" class="download">Last ned logg</button>
     </div>
@@ -148,20 +148,41 @@ export default {
       selectedUser: null,
     };
   },
+  updated() {
+    this.$nextTick(() => {
+      this.$refs.logContainer.scrollTop = this.$refs.logContainer.scrollHeight;
+    });
+  },
   methods: {
     findFile() {
       console.log("finding file name");
       const fileInput = document.querySelector("#visma-lønn");
       const path = fileInput.value;
       this.filename = path.split(/(\\|\/)/g).pop();
+      //shorten filename to max 10 characters
+      if (this.filename.length > 10) {
+        this.filename = this.filename.substring(0, 16) + "...";
+      }
+      if (this.filename === undefined) {
+        this.filename = "No file selected";
+      }
       console.log(this.filename);
     },
     findFile2() {
       console.log("finding file name");
       const fileInput = document.querySelector("#fakturagrunnlag");
       const path = fileInput.value;
-      this.filename2 = path.split(/(\\|\/)/g).pop();
-      console.log(this.filename2);
+      // Check if the input is empty
+      if (path) {
+        this.filename2 = path.split(/(\\|\/)/g).pop();
+        //shorten filename to max 10 characters
+        if (this.filename2.length > 10) {
+          this.filename2 = this.filename2.substring(0, 16) + "...";
+        }
+        console.log(this.filename2);
+      } else {
+        console.log("No file was selected");
+      }
     },
     showUploads() {
       // check if all three inputs are not null
@@ -199,6 +220,7 @@ export default {
           return true;
         }
       }
+      return false;
     },
     showCoverage() {
       if (this.company == null) {
@@ -210,6 +232,7 @@ export default {
           return true;
         }
       }
+      return false;
     },
     showSalary() {
       if (this.company == null) {
@@ -221,15 +244,18 @@ export default {
           return true;
         }
       }
+      return false;
     },
     // log coverage value
     logCoverage() {
       if (this.coverage == true) {
         var string = `${this.company.name}:${this.month}:${this.year}:fordeling:dekningsbidrag fordeles`;
         this.log.push(string);
-      } else {
+      } else if (this.coverage == false) {
         var str = `${this.company.name}:${this.month}:${this.year}:fordeling:dekningsbidrag fordeles ikke`;
         this.log.push(str);
+      } else {
+        console.log("error");
       }
     },
   },
