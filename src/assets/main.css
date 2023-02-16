@@ -7,7 +7,8 @@
 
 body {
   background-color: rgb(244, 245, 247);
-  background:url('./bakgrunnsbilde.svg') no-repeat;
+  background-image:url('./bakgrunnsbilde.svg');
+  background-repeat: no-repeat;
   overflow-y: hidden;
 }
 
@@ -74,6 +75,10 @@ input[type=number] {
     margin-top: 1%;
     box-sizing: border-box; 
 }
+.inputs h1 {
+  height: 20%;
+}
+
 
 /* create a container for the three parts of 'importere visma lønn' */
 .visma-lønn-container, .invoice-container {
