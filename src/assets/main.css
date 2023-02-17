@@ -7,7 +7,8 @@
 
 body {
   background-color: rgb(244, 245, 247);
-  background:url('./bakgrunnsbilde.svg') no-repeat;
+  background-image:url('./bakgrunnsbilde.svg');
+  background-repeat: no-repeat;
   overflow-y: hidden;
 }
 
@@ -21,10 +22,9 @@ body {
 .column {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 33.33%;
   margin: 5%;
-  margin-top: 10vh;
+  margin-top: 7%;
 }
 
 label {
@@ -75,6 +75,7 @@ input[type=number] {
     box-sizing: border-box; 
 }
 
+
 /* create a container for the three parts of 'importere visma lønn' */
 .visma-lønn-container, .invoice-container {
   display: grid;
@@ -121,9 +122,9 @@ input[type=number] {
 
 .uploads {
   color: rgb(112, 112, 112);
-  margin-top: 19%;
   font-family: 'lato';
-  padding-top: 2rem
+  padding-top: 2rem;
+  justify-content:center
 }
 
 .filename {
@@ -145,17 +146,17 @@ input[type=number] {
 }
 
 .dropdown {
-    font-family: 'lato';
-    width: 99%;
-    background-color: #EBEBEB;
-    border: none;
-    padding: 10px 11px 11px 11px;
-    border-radius: 0.3rem;
-    box-shadow: none;
-    outline: none;
-    margin: 0.5%;
-    box-sizing: border-box;
-    font: 'lato';
+  font-family: 'lato';
+  width: 99%;
+  background-color: #EBEBEB;
+  border: none;
+  padding: 10px 11px 11px 11px;
+  border-radius: 0.3rem;
+  box-shadow: none;
+  outline: none;
+  margin: 0.5%;
+  box-sizing: border-box;
+  font: 'lato';
 }
 
 .log-entry {
@@ -176,11 +177,11 @@ input[type=number] {
   color:rgb(40, 64, 149);
   border-radius: 5px;
   border-width: 5px;
-  min-height: 40vh;
+  min-height: 300px;
   padding-left: 10%;
   padding-right: 10%;
-  padding-top: 0.5vw;
-  padding-bottom: 1vw;
+  margin-bottom: 56.5px;
+  height: 100%;
 }
 
 .log-window {
@@ -193,18 +194,22 @@ input[type=number] {
   color: rgb(40, 64, 149);
   border-radius: 5px;
   border-width: 5px;
-  max-height: 40vh;
-  min-height: 40vh;
+  min-height: 300px;
 }
 
-.log-title {
-  color: rgb(40, 64, 149);
-  text-align: left;
+h1 {
   font: 'lato';
-  font-size: 27px;
+  font-size: 2rem;
+  margin-top: -10%;
+  margin-bottom: 10%;
+  color: rgb(40, 64, 149);
+  height: 90px;
+  min-height: 90px;
+  text-align: left;
+
 }
 
-.download {
+.download, .none {
   /* better button styling */
   background-color: rgb(237, 166, 66);
   border: none;
@@ -218,13 +223,6 @@ input[type=number] {
   cursor: pointer;
   border-radius: 0.3rem;
   width: 160px;
-}
-
-h1 {
-  font-size: 2rem;
-  margin-top: -10%;
-  margin-bottom: 10%;
-  color: rgb(40, 64, 149)
 }
 
 .settings {
@@ -267,4 +265,8 @@ h1 {
   font-size: larger;
   margin-left: 1vw;
   font-size: 2rem;
+}
+
+.hidden {
+  display: none;
 }
