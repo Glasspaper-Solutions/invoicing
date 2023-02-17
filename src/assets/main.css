@@ -172,7 +172,7 @@ input[type=number] {
   font-size: 1rem;
 }
 
-.border{
+.border {
   border-style: solid;
   color:rgb(40, 64, 149);
   border-radius: 5px;
