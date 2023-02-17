@@ -2,14 +2,14 @@
 <template>
   <div class="select-user" v-if="selectedUser == null && login == false">
     <!--select user option from data-->
-    <label for="user">Velg bruker</label>
+    <label for="user">{{ lang.chooseUser }}</label>
     <select
       id="user"
       class="dropdown"
       v-model="selectedUser"
       @change="userChanged"
     >
-      <option value="" disabled>Velg en bruker</option>
+      <option value="" disabled>{{ lang.chooseAUser }}</option>
       <option v-for="user in data.users" :key="user" :value="user">
         {{ user.name }}
       </option>
@@ -20,18 +20,18 @@
   </div>
   <div class="container" v-if="selectedUser != null && login == false">
     <div class="column inputs">
-      <h1>Regnskap <br>Integrasjon</h1>
+      <h1>{{ lang.accounting }} <br>{{ lang.integration }}</h1>
       <!-- Company selection -->
       <div class="border">
       <div class="company">
-        <label for="company">Selskap</label>
+        <label for="company">{{ lang.company }}</label>
         <select
           id="company"
           class="dropdown"
           v-model="company"
           @change="companyChanged"
         >
-          <option value="" disabled>Velg et selskap</option>
+          <option value="" disabled>{{ lang.chooseACompany }}</option>
           <option v-for="company in selectedUser.companies" :key="company" :value="company" v-bind="company">
             {{ company.name }}
           </option>
@@ -39,24 +39,24 @@
       </div>
       <!-- Year input -->
       <div class="year">
-        <label for="year">År</label>
+        <label for="year">{{ lang.year }}</label>
         <input
           id="year"
           class="input-area"
           v-model="year"
           type="number"
-          placeholder="Skriv år"
+          :placeholder="lang.writeWhatYear"
         />
       </div>
       <!--month selection-->
       <div class="month">
-        <label for="month">Måned</label>
+        <label for="month">{{ lang.month }}</label>
         <select
           class="dropdown"
           id="month"
           v-model="month"
         >
-          <option value="" disabled>Velg en måned</option>
+          <option value="" disabled>{{ lang.chooseAMonth }}</option>
           <option v-for="month in months" :key="month" :value="month">
             {{ month }}
           </option>
@@ -71,12 +71,12 @@
           <div class="visma-lønn-container" v-if="showSalary()">
             <div class="custom-file-upload">
                 <label class="visma-lønn-label" for="visma-lønn">
-                  <div class="clickable-area">{{ buttonText }}</div>
+                  <div class="clickable-area">{{ lang.chooseFile }}</div>
                 </label>
                 <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
             </div>
             <p class="filename">{{ filename }}</p>
-            <input class="submit-button" type="submit" value="Send fil" v-if="filename != 'Ingen fil valgt'">
+            <input class="submit-button" type="submit" :value="lang.sendFile" v-if="filename != 'Ingen fil valgt'">
           </div>
         </form>
         <!-- distribute coverage contributions -->
@@ -87,69 +87,97 @@
           <p>Importere fakturagrunnlag</p>
           <div class="invoice-container">
             <div class="custom-file-upload">
-                <label class="invoice-label" for="fakturagrunnlag"><div class="clickable-area">{{ buttonText }}</div></label>
+                <label class="invoice-label" for="fakturagrunnlag"><div class="clickable-area">{{ lang.chooseFile }}</div></label>
                 <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag" @change="findFile2()"/> 
             </div>
             <p class="filename" >{{ filename2 }}</p>
-            <input class="submit-button" type="submit" value="Send fil" v-if="filename2 != 'Ingen fil valgt'">
+            <input class="submit-button" type="submit" :value="lang.sendFile" v-if="filename2 != 'Ingen fil valgt'">
           </div>
         </form>
       </div>
     </div>
     <div class="column log">
       <!--log window-->
-      <p>Logg</p>
+      <p>{{ lang.log }}</p>
       <div class="log-window" ref="logContainer">
         <p v-for="log in log" :key="log">{{ log }}</p>
       </div>
-      <button @click="downloadLog()" class="download">Last ned logg</button>
+      <button @click="downloadLog()" class="download">{{ lang.downloadLog }}</button>
     </div>
   </div>
   <div class="settings" v-if="login == true">
     <!--log out and back button-->
-    <button @click="selectedUser=null, login = false" class="log-out">Logg ut</button>
-    <button @click="login = false" class="back">Tilbake</button>
+    <button @click="selectedUser=null, login = false" class="log-out">{{ lang.logOut }}</button>
+    <button @click="login = false" class="back">{{ lang.back }}</button>
+    <!--select language-->
+    <div class="language">
+      <label for="language" class="language-label">{{ lang.language }}</label>
+      <select
+        id="language"
+        class="dropdown"
+        v-model="langName"
+        @change="langChanged()"
+      >
+        <option value="no">Norsk</option>
+        <option value="en">English</option>
+      </select>
+    </div>
   </div>
 </template>
 
 <script>
 import Users from "./assets/data/users";
+import No from "./assets/lang/no";
+import En from "./assets/lang/en";
 
 export default {
   name: "App",
   data() {
     return {
+      // change langName here to be page default
+      langName: "en",
+      lang: null,
       coverage: false,
       login: false,
       company: null,
       year: null,
-      months: [
-        "Januar",
-        "Februar",
-        "Mars",
-        "April",
-        "Mai",
-        "Juni",
-        "Juli",
-        "August",
-        "September",
-        "Oktober",
-        "November",
-        "Desember",
-      ],
+      months: null,
       month: null,
       buttonText: "Velg fil",
-      filename: "Ingen fil valgt",
-      filename2: "Ingen fil valgt",
+      filename: null,
+      filename2: null,
       log: [],
       // load json data from file
       data: Users,
       selectedUser: null,
     };
   },
+  beforeMount() {
+    console.log(this.langName);
+    // set lang
+    this.lang = this.langName === "no" ? No.words : En.words;
+    this.months = [
+      this.lang.months.january,
+      this.lang.months.february,
+      this.lang.months.march,
+      this.lang.months.april,
+      this.lang.months.may,
+      this.lang.months.june,
+      this.lang.months.july,
+      this.lang.months.august,
+      this.lang.months.september,
+      this.lang.months.october,
+      this.lang.months.november,
+      this.lang.months.december,
+    ];
+    console.log(this.lang);
+  },
   updated() {
     this.$nextTick(() => {
-      this.$refs.logContainer.scrollTop = this.$refs.logContainer.scrollHeight;
+      if (this.$refs.logContainer != null) {
+        this.$refs.logContainer.scrollTop =
+          this.$refs.logContainer.scrollHeight;
+      }
     });
   },
   methods: {
@@ -256,6 +284,26 @@ export default {
       } else {
         console.log("error");
       }
+    },
+    langChanged() {
+      console.log(this.langName);
+      // set lang
+      this.lang = this.langName === "no" ? No.words : En.words;
+      this.months = [
+        this.lang.months.january,
+        this.lang.months.february,
+        this.lang.months.march,
+        this.lang.months.april,
+        this.lang.months.may,
+        this.lang.months.june,
+        this.lang.months.july,
+        this.lang.months.august,
+        this.lang.months.september,
+        this.lang.months.october,
+        this.lang.months.november,
+        this.lang.months.december,
+      ];
+      console.log(this.lang);
     },
   },
 };

@@ -259,3 +259,15 @@ h1 {
   margin-left: 1vw;
   font-size: 2rem;
 }
+
+.language {
+  text-align: center;
+  padding-top: 5vh;
+}
+
+.language-label {
+  font-size: 1.5rem;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  color: #40414F;
+}
