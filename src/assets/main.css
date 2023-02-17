@@ -113,7 +113,7 @@ input[type=number] {
   padding: 6px 12px;  
   text-align: center;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 16px;
   color: rgb(112, 112, 112)
 }
 
@@ -161,7 +161,7 @@ input[type=number] {
 .log-window p {
   color: rgb(40, 64, 149);
   text-align: center;
-  font-size: 1rem;
+  font-size: 13px;
 }
 
 .border {
@@ -264,5 +264,5 @@ h1 {
 }
 
 .uploads p {
-  font-size: 17px;
+  font-size: 16px;
 }
