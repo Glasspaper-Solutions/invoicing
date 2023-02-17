@@ -23,46 +23,46 @@
       <h1>{{ lang.accounting }} <br>{{ lang.integration }}</h1>
       <!-- Company selection -->
       <div class="border">
-      <div class="company">
-        <label for="company">{{ lang.company }}</label>
-        <select
-          id="company"
-          class="dropdown"
-          v-model="company"
-          @change="companyChanged"
-        >
-          <option value="" disabled>{{ lang.chooseACompany }}</option>
-          <option v-for="company in selectedUser.companies" :key="company" :value="company" v-bind="company">
-            {{ company.name }}
-          </option>
-        </select>
+        <div class="company">
+          <label for="company">{{ lang.company }}</label>
+          <select
+            id="company"
+            class="dropdown"
+            v-model="company"
+            @change="companyChanged"
+          >
+            <option value="" disabled>{{ lang.chooseACompany }}</option>
+            <option v-for="company in selectedUser.companies" :key="company" :value="company" v-bind="company">
+              {{ company.name }}
+            </option>
+          </select>
+        </div>
+        <!-- Year input -->
+        <div class="year">
+          <label for="year">{{ lang.year }}</label>
+          <input
+            id="year"
+            class="input-area"
+            v-model="year"
+            type="number"
+            :placeholder="lang.writeWhatYear"
+          />
+        </div>
+        <!--month selection-->
+        <div class="month">
+          <label for="month">{{ lang.month }}</label>
+          <select
+            class="dropdown"
+            id="month"
+            v-model="month"
+          >
+            <option value="" disabled>{{ lang.chooseAMonth }}</option>
+            <option v-for="month in months" :key="month" :value="month">
+              {{ month }}
+            </option>
+          </select>
+        </div>
       </div>
-      <!-- Year input -->
-      <div class="year">
-        <label for="year">{{ lang.year }}</label>
-        <input
-          id="year"
-          class="input-area"
-          v-model="year"
-          type="number"
-          :placeholder="lang.writeWhatYear"
-        />
-      </div>
-      <!--month selection-->
-      <div class="month">
-        <label for="month">{{ lang.month }}</label>
-        <select
-          class="dropdown"
-          id="month"
-          v-model="month"
-        >
-          <option value="" disabled>{{ lang.chooseAMonth }}</option>
-          <option v-for="month in months" :key="month" :value="month">
-            {{ month }}
-          </option>
-        </select>
-      </div>
-    </div>
     </div>
     <div class="column uploads">
       <div class="subuploads" v-if="showUploads()">
@@ -98,9 +98,9 @@
     </div>
     <div class="column log">
       <!--log window-->
-      <p>{{ lang.log }}</p>
+      <h1 class="log-title"><span class="hidden">Hidden content</span><br>{{ lang.log }}</h1>
       <div class="log-window" ref="logContainer">
-        <p v-for="log in log" :key="log">{{ log }}</p>
+        <p class="log-entry" v-for="log in log" :key="log">{{ log }}</p>
       </div>
       <button @click="downloadLog()" class="download">{{ lang.downloadLog }}</button>
     </div>
@@ -187,7 +187,7 @@ export default {
       const path = fileInput.value;
       this.filename = path.split(/(\\|\/)/g).pop();
       //shorten filename to max 10 characters
-      if (this.filename.length > 10) {
+      if (this.filename.length > 13) {
         this.filename = this.filename.substring(0, 16) + "...";
       }
       if (this.filename === undefined) {
@@ -203,7 +203,7 @@ export default {
       if (path) {
         this.filename2 = path.split(/(\\|\/)/g).pop();
         //shorten filename to max 10 characters
-        if (this.filename2.length > 10) {
+        if (this.filename2.length > 13) {
           this.filename2 = this.filename2.substring(0, 16) + "...";
         }
         console.log(this.filename2);

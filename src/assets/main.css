@@ -3,11 +3,14 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: 'lato', sans-serif;
 }
 
 body {
-  background-color: rgb(244, 245, 247);
-  background:url('./bakgrunnsbilde.svg') no-repeat;
+  background-color: rgb(243, 240, 241);
+  background-image:url('./bakgrunnsbilde.svg');
+  background-repeat: no-repeat;
+  overflow-y: hidden;
 }
 
 /* create container layout with 3 columns each being 1/3  */
@@ -20,16 +23,14 @@ body {
 .column {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 33.33%;
   margin: 5%;
-  margin-top: 10%;
+  margin-top: 7%;
 }
 
 label {
   font-size: 1rem;
   text-align: center;
-  font: 'lato', sans-serif;
 }
 
 .year, .company, .month {
@@ -41,7 +42,6 @@ label {
   margin-top: 10%;
   font-size: 1rem;
   margin-bottom: 11%;
-  font: 'lato';
 }
 
 input::-webkit-outer-spin-button,
@@ -54,13 +54,11 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-
-
 .input-area {
     -webkit-appearance:textfield;
     -moz-appearance:textfield;
     appearance: none;
-    font: 1rem, 'lato', sans-serif;
+    font-size: 1rem;
     color: #40414F;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -76,6 +74,7 @@ input[type=number] {
     box-sizing: border-box; 
 }
 
+
 /* create a container for the three parts of 'importere visma lønn' */
 .visma-lønn-container, .invoice-container {
   display: grid;
@@ -88,18 +87,17 @@ input[type=number] {
 .custom-file-upload, .submit-button {
   display: inline-block;
   background-color: #EBEBEB;
-  color: rgb(0, 0, 0);
+  color: rgb(112, 112, 112);
   border: none;
   width: 100%;
   cursor: pointer;
-  font:'lato', sans-serif;
 };
 
 .custom-file-upload:hover {
   background-color: #0069d9;
 }
 .custom-file-upload:active {
-  background-color: rgb(40, 64, 149);
+  background-color: rgb(112, 112, 112);
   color: rgb(244, 245, 247);
 }
 
@@ -115,15 +113,14 @@ input[type=number] {
   padding: 6px 12px;  
   text-align: center;
   cursor: pointer;
-  font-size: 12px;
-  font: 'lato';
+  font-size: 16px;
   color: rgb(112, 112, 112)
 }
 
 .uploads {
   color: rgb(112, 112, 112);
-  margin-top: 19%;
-  font-family: 'lato';
+  padding-top: 2rem;
+  justify-content:center
 }
 
 .filename {
@@ -131,7 +128,6 @@ input[type=number] {
   padding-top: 0.75vw;
   padding-left: 1vw;
   padding-right: 1vw;
-  font: 'lato', sans-serif;
 }
 
 .fordel-dekningsbidrag {
@@ -145,30 +141,40 @@ input[type=number] {
 }
 
 .dropdown {
-   font-family: 'lato';
-    width: 99%;
-    background-color: #EBEBEB;
-    border: none;
-    padding: 10px 11px 11px 11px;
-    border-radius: 0.3rem;
-    box-shadow: none;
-    outline: none;
-    margin: 0.5%;
-    box-sizing: border-box;
-    font: 'lato';
+  width: 99%;
+  background-color: #EBEBEB;
+  border: none;
+  padding: 10px 11px 11px 11px;
+  border-radius: 0.3rem;
+  box-shadow: none;
+  outline: none;
+  margin: 0.5%;
+  box-sizing: border-box;
 }
 
-.log p {
+.log-entry {
   color: rgb(40, 64, 149);
   text-align: left;
-  font: 'lato';
   font-size: 10px;
-
 }
 
 .log-window p {
   color: rgb(40, 64, 149);
   text-align: center;
+  font-size: 13px;
+}
+
+.border {
+  border-style: solid;
+  color:rgb(40, 64, 149);
+  border-radius: 5px;
+  border-width: 5px;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-bottom: 56.5px;
+  height: 100%;
+  min-height: 45vh;
+  max-height: 45vh;
 }
 
 .log-window {
@@ -176,19 +182,31 @@ input[type=number] {
   overflow-y: scroll;
   border-radius: 1%;
   height: 100%;
-  max-height: 30vh;
   scroll-behavior: smooth;
   border-style: solid;
   color: rgb(40, 64, 149);
-  border-width: 5px
+  border-radius: 5px;
+  border-width: 5px;
+  min-height: 45vh;
+  max-height: 45vh;
 }
 
-.download {
+h1 {
+  font-size: 2rem;
+  margin-top: -10%;
+  margin-bottom: 10%;
+  color: rgb(40, 64, 149);
+  height: 90px;
+  min-height: 90px;
+  text-align: left;
+}
+
+.download, .none {
   /* better button styling */
   background-color: rgb(237, 166, 66);
   border: none;
   color: black;
-  padding: 15px 15px;
+  padding: 14px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -197,35 +215,17 @@ input[type=number] {
   cursor: pointer;
   border-radius: 0.3rem;
   width: 160px;
-}
-
-.border{
-  border-style: solid;
-  color:rgb(40, 64, 149);
-  border-style: 20;
-  border-radius: 5px;
-  border-width: 5px;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
-}
-
-h1 {
-  font-size: 2rem;
-  margin-top: -10%;
-  margin-bottom: 10%;
-  color: rgb(40, 64, 149)
+  margin-left: auto;
 }
 
 .settings {
-  width: 7vw;
+  width: 6rem;
 }
 
 .settings button {
   background-color: rgb(237, 166, 66);
   border: none;
-  color: black;
+  color: rgb(0, 0, 0);
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
@@ -255,7 +255,6 @@ h1 {
 }
 
 .select-user > label {
-  font-size: larger;
   margin-left: 1vw;
   font-size: 2rem;
 }
@@ -270,4 +269,12 @@ h1 {
   margin-top: 1vh;
   margin-bottom: 1vh;
   color: #40414F;
+}
+
+.hidden {
+  display: none;
+}
+
+.uploads p {
+  font-size: 16px;
 }
