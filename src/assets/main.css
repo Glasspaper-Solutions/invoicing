@@ -73,12 +73,16 @@ input[type=number] {
     outline: none;
     margin: 0.5%;
     margin-top: 1%;
-    box-sizing: border-box; 
+    box-sizing: border-box;
+    display: block;
 }
 .inputs h1 {
   height: 20%;
 }
 
+.small-input {
+  width: 60%;
+}
 
 /* create a container for the three parts of 'importere visma lønn' */
 .visma-lønn-container, .invoice-container {
@@ -98,6 +102,17 @@ input[type=number] {
   cursor: pointer;
   font:'lato', sans-serif;
 };
+
+.submit-button-small button {
+  display: inline-block;
+  background-color: #EBEBEB;
+  color: rgb(0, 0, 0);
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  font:'lato', sans-serif;
+};
+
 
 .custom-file-upload:hover {
   background-color: #0069d9;
