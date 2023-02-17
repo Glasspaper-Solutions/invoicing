@@ -44,8 +44,12 @@
             id="year"
             class="input-area"
             v-model="year"
-            type="number"
+            type="text"
             :placeholder="lang.writeWhatYear"
+            pattern="[0-9]{4}"
+            maxlength="4"
+            min="0"
+            max="9999"
           />
         </div>
         <!--month selection-->
