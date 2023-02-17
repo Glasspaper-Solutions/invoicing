@@ -20,7 +20,7 @@
   </div>
   <div class="container" v-if="selectedUser != null && login == false">
     <div class="column inputs">
-      <h1>Regnskap Integrasjon</h1>
+      <h1>Regnskap <br>Integrasjon</h1>
       <!-- Company selection -->
       <div class="border">
         <div class="company">
@@ -98,7 +98,7 @@
     </div>
     <div class="column log">
       <!--log window-->
-      <p class="log-title">Logg</p>
+      <h1 class="log-title"><span class="hidden">Hidden content</span><br>Logg</h1>
       <div class="log-window" ref="logContainer">
         <p class="log-entry" v-for="log in log" :key="log">{{ log }}</p>
       </div>
