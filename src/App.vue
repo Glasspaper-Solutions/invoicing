@@ -2,18 +2,10 @@
 <template>
   <div class="select-user" v-if="selectedUser == null && login == false">
     <!--select user option from data-->
-    <label for="user">Velg bruker</label>
-    <select
-      id="user"
-      class="dropdown"
-      v-model="selectedUser"
-      @change="userChanged"
-    >
-      <option value="" disabled>Velg en bruker</option>
-      <option v-for="user in data.users" :key="user" :value="user">
-        {{ user.name }}
-      </option>
-    </select>
+    <label for="email" class="form-label" @click="selectedUser = 'admin'">Logg inn</label>
+    <input type="email" class="input-area small-input" id="email" v-model="userMail" placeholder="Skriv inn epost">
+    <input type="password" class="input-area small-input" id="password" v-model="userPassword" placeholder="Skriv inn passord">
+    <button @click="verifyLogin()" class="submit-button-small">Logg inn</button>
   </div>
   <div @click="login=true" v-if="selectedUser != null">
     <img class="settings" src="./assets/settings-icon.svg" alt="innstillinger">
@@ -119,6 +111,8 @@ export default {
   name: "App",
   data() {
     return {
+      userMail: null,
+      userPassword: null,
       coverage: false,
       login: false,
       company: null,
@@ -256,6 +250,44 @@ export default {
       } else {
         console.log("error");
       }
+    },
+    // log user in
+    verifyLogin() {
+      // send api request using fetch
+      fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: this.userMail,
+          password: this.userPassword,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          // check if user exists
+          if (data.user) {
+            // check if user is admin
+            if (data.user.admin == true) {
+              this.login = true;
+              this.log.push("Innlogging:admin logget inn");
+            } else {
+              this.login = true;
+              this.log.push("Innlogging:bruker logget inn");
+            }
+          } else {
+            alert("Feil brukernavn eller passord");
+          }
+        });
+    },
+    // log user out
+    logOut() {
+      this.login = false;
+      this.userMail = null;
+      this.userPassword = null;
+      this.log.push("Utloggning:bruker logget ut");
     },
   },
 };
