@@ -159,7 +159,7 @@ export default {
       const path = fileInput.value;
       this.filename = path.split(/(\\|\/)/g).pop();
       //shorten filename to max 10 characters
-      if (this.filename.length > 10) {
+      if (this.filename.length > 13) {
         this.filename = this.filename.substring(0, 16) + "...";
       }
       if (this.filename === undefined) {
@@ -175,7 +175,7 @@ export default {
       if (path) {
         this.filename2 = path.split(/(\\|\/)/g).pop();
         //shorten filename to max 10 characters
-        if (this.filename2.length > 10) {
+        if (this.filename2.length > 13) {
           this.filename2 = this.filename2.substring(0, 16) + "...";
         }
         console.log(this.filename2);
