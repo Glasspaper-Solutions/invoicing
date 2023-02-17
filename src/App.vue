@@ -107,8 +107,8 @@
   </div>
   <div class="settings" v-if="login == true">
     <!--log out and back button-->
-    <button @click="selectedUser=null, login = false" class="log-out">{{ lang.logOut }}</button>
     <button @click="login = false" class="back">{{ lang.back }}</button>
+    <button @click="selectedUser=null, login = false" class="log-out">{{ lang.logOut }}</button>
     <!--select language-->
     <div class="language">
       <label for="language" class="language-label">{{ lang.language }}</label>
