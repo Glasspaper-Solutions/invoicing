@@ -169,12 +169,12 @@ input[type=number] {
   color:rgb(40, 64, 149);
   border-radius: 5px;
   border-width: 5px;
-  min-height: 300px;
   padding-left: 10%;
   padding-right: 10%;
   margin-bottom: 56.5px;
   height: 100%;
-  max-height: 38vh;
+  min-height: 45vh;
+  max-height: 45vh;
 }
 
 .log-window {
@@ -187,8 +187,8 @@ input[type=number] {
   color: rgb(40, 64, 149);
   border-radius: 5px;
   border-width: 5px;
-  min-height: 300px;
-  max-height: 38vh;
+  min-height: 45vh;
+  max-height: 45vh;
 }
 
 h1 {
