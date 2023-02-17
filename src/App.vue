@@ -3,19 +3,14 @@
   <div class="select-user" v-if="selectedUser == null && login == false">
     <!--select user option from data-->
     <label for="user">Velg bruker</label>
-    <select
-      id="user"
-      class="dropdown"
-      v-model="selectedUser"
-      @change="userChanged"
-    >
+    <select id="user" class="dropdown" v-model="selectedUser" @change="userChanged">
       <option value="" disabled>Velg en bruker</option>
       <option v-for="user in data.users" :key="user" :value="user">
         {{ user.name }}
       </option>
     </select>
   </div>
-  <div @click="login=true" v-if="selectedUser != null">
+  <div @click="login = true" v-if="selectedUser != null">
     <img class="settings" src="./assets/settings-icon.svg" alt="innstillinger">
   </div>
   <div class="container" v-if="selectedUser != null && login == false">
@@ -23,46 +18,31 @@
       <h1>Regnskap <br>Integrasjon</h1>
       <!-- Company selection -->
       <div class="border">
-      <div class="company">
-        <label for="company">Selskap</label>
-        <select
-          id="company"
-          class="dropdown"
-          v-model="company"
-          @change="companyChanged"
-        >
-          <option value="" disabled>Velg et selskap</option>
-          <option v-for="company in selectedUser.companies" :key="company" :value="company" v-bind="company">
-            {{ company.name }}
-          </option>
-        </select>
+        <div class="company">
+          <label for="company">Selskap</label>
+          <select id="company" class="dropdown" v-model="company" @change="companyChanged">
+            <option value="" disabled>Velg et selskap</option>
+            <option v-for="company in selectedUser.companies" :key="company" :value="company" v-bind="company">
+              {{ company.name }}
+            </option>
+          </select>
+        </div>
+        <!-- Year input -->
+        <div class="year">
+          <label for="year">År</label>
+          <input id="year" class="input-area" v-model="year" type="number" placeholder="Skriv år" />
+        </div>
+        <!--month selection-->
+        <div class="month">
+          <label for="month">Måned</label>
+          <select class="dropdown" id="month" v-model="month">
+            <option value="" disabled>Velg en måned</option>
+            <option v-for="month in months" :key="month" :value="month">
+              {{ month }}
+            </option>
+          </select>
+        </div>
       </div>
-      <!-- Year input -->
-      <div class="year">
-        <label for="year">År</label>
-        <input
-          id="year"
-          class="input-area"
-          v-model="year"
-          type="number"
-          placeholder="Skriv år"
-        />
-      </div>
-      <!--month selection-->
-      <div class="month">
-        <label for="month">Måned</label>
-        <select
-          class="dropdown"
-          id="month"
-          v-model="month"
-        >
-          <option value="" disabled>Velg en måned</option>
-          <option v-for="month in months" :key="month" :value="month">
-            {{ month }}
-          </option>
-        </select>
-      </div>
-    </div>
     </div>
     <div class="column uploads">
       <div class="subuploads" v-if="showUploads()">
@@ -70,10 +50,10 @@
           <p v-if="showSalary()">Importere visma lønn</p>
           <div class="visma-lønn-container" v-if="showSalary()">
             <div class="custom-file-upload">
-                <label class="visma-lønn-label" for="visma-lønn">
-                  <div class="clickable-area">{{ buttonText }}</div>
-                </label>
-                <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
+              <label class="visma-lønn-label" for="visma-lønn">
+                <div class="clickable-area">{{ buttonText }}</div>
+              </label>
+              <input type="file" id="visma-lønn" name="VismaLønn" @change="findFile()" />
             </div>
             <p class="filename">{{ filename }}</p>
             <input class="submit-button" type="submit" value="Send fil" v-if="filename != 'Ingen fil valgt'">
@@ -81,16 +61,19 @@
         </form>
         <!-- distribute coverage contributions -->
         <p v-if="showCoverage()" style="margin-top: 90px">Fordele dekningsbidrag</p>
-        <input type="checkbox" v-if="showCoverage()" class="fordel-dekningsbidrag" v-model="coverage" v-on:change="logCoverage()">
+        <input type="checkbox" v-if="showCoverage()" class="fordel-dekningsbidrag" v-model="coverage"
+          v-on:change="logCoverage()">
         <!-- import invoice -->
         <form action="javascript:void(0);" v-if="showInvoice()" @submit="sendFaktura()">
           <p>Importere fakturagrunnlag</p>
           <div class="invoice-container">
             <div class="custom-file-upload">
-                <label class="invoice-label" for="fakturagrunnlag"><div class="clickable-area">{{ buttonText }}</div></label>
-                <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag" @change="findFile2()"/> 
+              <label class="invoice-label" for="fakturagrunnlag">
+                <div class="clickable-area">{{ buttonText }}</div>
+              </label>
+              <input type="file" id="fakturagrunnlag" name="Fakturagrunnlag" @change="findFile2()" />
             </div>
-            <p class="filename" >{{ filename2 }}</p>
+            <p class="filename">{{ filename2 }}</p>
             <input class="submit-button" type="submit" value="Send fil" v-if="filename2 != 'Ingen fil valgt'">
           </div>
         </form>
@@ -107,7 +90,7 @@
   </div>
   <div class="settings" v-if="login == true">
     <!--log out and back button-->
-    <button @click="selectedUser=null, login = false" class="log-out">Logg ut</button>
+    <button @click="selectedUser = null, login = false" class="log-out">Logg ut</button>
     <button @click="login = false" class="back">Tilbake</button>
   </div>
 </template>

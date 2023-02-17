@@ -7,7 +7,7 @@
 
 body {
   background-color: rgb(244, 245, 247);
-  background:url('./bakgrunnsbilde.svg') no-repeat;
+  background: url('./bakgrunnsbilde.svg') no-repeat;
   overflow: hidden;
 }
 
@@ -31,7 +31,9 @@ label {
   font: 'lato', sans-serif;
 }
 
-.year, .company, .month {
+.year,
+.company,
+.month {
   color: rgb(40, 64, 149);
   text-align: left;
   align-items: center;
@@ -53,30 +55,29 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-
-
 .input-area {
-    -webkit-appearance:textfield;
-    -moz-appearance:textfield;
-    appearance: none;
-    font: 1rem, 'lato', sans-serif;
-    color: #40414F;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    width: 99%;
-    background-color: #EBEBEB;
-    border: none;
-    padding: 11px;
-    border-radius: 0.3rem;
-    box-shadow: none;
-    outline: none;
-    margin: 0.5%;
-    margin-top: 1%;
-    box-sizing: border-box; 
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: none;
+  font: 1rem, 'lato', sans-serif;
+  color: #40414F;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 99%;
+  background-color: #EBEBEB;
+  border: none;
+  padding: 11px;
+  border-radius: 0.3rem;
+  box-shadow: none;
+  outline: none;
+  margin: 0.5%;
+  margin-top: 1%;
+  box-sizing: border-box;
 }
 
 /* create a container for the three parts of 'importere visma lønn' */
-.visma-lønn-container, .invoice-container {
+.visma-lønn-container,
+.invoice-container {
   display: grid;
   grid-auto-rows: auto;
   grid-template-columns: 1fr 2fr 1fr;
@@ -91,12 +92,13 @@ input[type=number] {
   border: none;
   width: 100%;
   cursor: pointer;
-  font:'lato', sans-serif;
-};
+  font: 'lato', sans-serif;
+}
 
 .custom-file-upload:hover {
   background-color: #0069d9;
 }
+
 .custom-file-upload:active {
   background-color: rgb(40, 64, 149);
   color: rgb(244, 245, 247);
@@ -111,7 +113,7 @@ input[type=number] {
 }
 
 .clickable-area {
-  padding: 6px 12px;  
+  padding: 6px 12px;
   text-align: center;
   cursor: pointer;
   font-size: 12px;
@@ -139,23 +141,23 @@ input[type=number] {
   border: none;
   padding: 6px 12px;
   cursor: pointer;
-  color:rgb(112, 112, 112);
-  border-radius: 1% ;
+  color: rgb(112, 112, 112);
+  border-radius: 1%;
   margin-bottom: 90px;
 }
 
 .dropdown {
-   font-family: 'lato';
-    width: 99%;
-    background-color: #EBEBEB;
-    border: none;
-    padding: 10px 11px 11px 11px;
-    border-radius: 0.3rem;
-    box-shadow: none;
-    outline: none;
-    margin: 0.5%;
-    box-sizing: border-box;
-    font: 'lato';
+  font-family: 'lato';
+  width: 99%;
+  background-color: #EBEBEB;
+  border: none;
+  padding: 10px 11px 11px 11px;
+  border-radius: 0.3rem;
+  box-shadow: none;
+  outline: none;
+  margin: 0.5%;
+  box-sizing: border-box;
+  font: 'lato';
 }
 
 .log p {
@@ -174,9 +176,9 @@ input[type=number] {
 
 .border {
   border-style: solid;
-  color:rgb(40, 64, 149);
+  color: rgb(40, 64, 149);
   border-radius: 5px;
-  
+
   border-width: 5px;
   padding-left: 10%;
   padding-right: 10%;
@@ -195,7 +197,7 @@ input[type=number] {
 
   text-align: left;
   overflow: scroll;
-  scroll-behavior:initial;
+  scroll-behavior: initial;
 }
 
 .download {
@@ -256,7 +258,7 @@ h1 {
   margin-top: 20vw;
 }
 
-.select-user > label {
+.select-user>label {
   font-size: larger;
   margin-left: 1vw;
   font-size: 2rem;
